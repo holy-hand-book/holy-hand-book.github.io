@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		Holy Hand Book
+	</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700" rel="stylesheet">
+	<style>
+		:root {
+			--dark: #1a1c2c;
+			--light: #f4f4f4;
+			--red: #b13e53;
+			--orange: #ef7d57;
+			--yellow: #ffcd75;
+			--green: #38b764;
+			--blue: #3b5dc9;
+			--purple: #5d275d;
+		}
+
+		* {
+			font-family: 'Roboto Mono', monospace;
+			color: var(--dark);
+		}
+
+		body {background-color: var(--dark)}
+
+		p {
+			padding: 0;
+			font-size: 12px;
+		}
+
+		mark {padding: 1px 1ch}
+
+		hr, .script{
+			border: 1px var(--dark) solid;
+		}
+
+		a:link, a:visited {
+			color: var(--light);
+			text-decoration: none;
+		}
+
+		.section {
+			max-width: 600px;
+			padding: 2px 100px;
+			margin: 10px auto;
+			text-align: center;
+			background-color: var(--light);
+		}
+
+		.left {text-align: left}
+
+		.tab {
+			padding-left: 4ch;
+			border-left: 2px var(--dark) solid;
+		}
+
+		.script {
+			padding-left: 1ch;
+			border-width: 2px;
+			white-space: pre-line;
+			width: 100%;
+			display: block;
+		}
+
+		.script:first-line {line-height: 0}
+
+		.darkBg, ::selection {background-color: var(--dark);color: var(--light)}
+		.lightBg {background-color: var(--light);color: var(--dark)}
+		.redBg {background-color: var(--red);color: var(--light)}
+		.orangeBg {background-color: var(--orange);color: var(--dark)}
+		.yellowBg {background-color: var(--yellow);color: var(--dark)}
+		.greenBg {background-color: var(--green);color: var(--dark)}
+		.blueBg {background-color: var(--blue);color: var(--light)}
+		.purpleBg {background-color: var(--purple);color: var(--light)}
+	</style>
+</head>
+<body>
+<div class="section">
+	<h2><mark class="darkBg">Holy Hand Book</mark></h2>
+	<hr>
+	<p>A resource to help you become a better games developer</p>
+</div>
+<div class="section">
+	<h2><mark class="redBg">Content</mark></h2>
+	<hr>
+	<p>Use this to get around the page</p>
+</div>
+<div class="section">
+	<h2><mark class="orangeBg">Tips & Tricks</mark></h2>
+	<hr>
+	<p>This section will contain useful tips, tricks and tutorials to make creating games easier</p>
+</div>
+<div class="section">
+	<h2><mark class="yellowBg">Code</mark></h2>
+	<hr>
+	<p>I will both keep scripts and snippets to both teach the fundamentals and for my own convenience</p>
+	<div class="left">
+		<h3><mark class="darkBg">Unity</mark></h3>
+		<div class="tab">
+			<h4>Variables</h4>
+			<p class="yellowBg script">
+				// Variables are containers that can store different types of data.
+				// Strings store text.
+				string myString = "Hello World!";
+				// Integers store whole numbers.
+				int myInt = 12345;
+				// Floats store floating point (decimal) numbers.
+				float myFloat = 1.2345;
+				// Booleans can either store true or false.
+				bool myBool = true;
+			</p>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><mark class="greenBg">Resources</mark></h2>
+	<hr>
+	<p>This sections contains links</p>
+	<div class="left">
+		<h3><mark class="darkBg">Programs</mark></h3>
+		<div class="tab">
+			<h4>Game Engines</h4>
+			<div class="tab">
+				<p><mark class="darkBg"><a href="https://unity.com/">Unity</a></mark>
+					- A very versatile engine that can be used for both 3D and 2D games. I would highly recommend this for beginners.</p>
+				<p><mark class="darkBg"><a href="https://godotengine.org/">Godot</a></mark>
+					- The open source alternative to Unity, can do just as much if not more than Unity and due
+					to it being open source, you can modify it in any way you want. Did I mention that it only takes up 50MB?</p>
+				<p><mark class="darkBg"><a href="https://love2d.org/">Love 2D</a></mark>
+					- This is a 2D game engine.
+				</p>
+			</div>
+			<h4>IDEs</h4>
+			<div class="tab">
+				<p><mark class="darkBg"><a href="https://www.jetbrains.com/">JetBrains</a></mark>
+					- JetBrains for programmers is what Adobe is for artists. They make tools for pretty much every
+					programming language and they're my favourite. All of the programs have a consistent format which
+					means that transitioning between them is really simple. However just like Adobe, you'll need to pay
+					a monthly or yearly fee. But they have a lot of discounts like a free licence for anyone in education.
+				</p>
+				<p><mark class="darkBg"><a href="https://visualstudio.microsoft.com/vs/">Visual Studio</a></mark>
+					- Visual Studio is a free IDE that you can use for pretty much anything.
+				</p>
+			</div>
+			<h4>Art Tools</h4>
+			<div class="tab">
+				<p><mark class="darkBg"><a href="https://www.photoshop.com/">Photoshop</a></mark>
+					- Photoshop is Jack of all art tools. It can be used for any type of art, from traditional to pixel
+					which means it'll work with any project you want.
+				</p>
+				<p><mark class="darkBg"><a href="https://www.aseprite.org/">Aseprite</a></mark>
+					- Aseprite is my favourite pixel art tool by far, it's very versatile and has tons of functionality.
+					While at the same it's specialised for pixel art which means everything is focused on manipulating pixels.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><mark class="blueBg">About</mark></h2>
+	<hr>
+	<p>This sections contains all the information about Holy Hand Book</p>
+	<div class="left">
+		<h4>What exactly is the Holy Hand Book?</h4>
+		<div class="tab">
+			<p>The Holy Hand Book is a website that contains different resources to help you with game development.
+				You'll find everything from tips and tricks to links to software and other resources.
+			</p>
+		</div>
+		<h4>How did this come about?</h4>
+		<div class="tab">
+			<p>This project originally started out when a friend asked me for tips to help him with Unity. I created a
+				text file with tons of tips, tricks and links and realised that a website would be a much better format
+				for this.
+			</p>
+		</div>
+		<h4>Credits</h4>
+		<div>
+			<div class="tab">
+				<p>Created by: Justinas "jstn_as" Grigas</p>
+				<p>Hosted on: GitHub</p>
+				<p>Font: Roboto Mono</p>
+				<p>Palette: Sweetie 16</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2><mark class="purpleBg">Extra</mark></h2>
+	<hr>
+	<p>Everything else goes here!</p>
+</div>
+</body>
+</html>
