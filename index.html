@@ -19,7 +19,7 @@
         }
 
         * {
-            font-family: 'Roboto Mono', monospace;
+            font-family: 'Roboto Mono', monospace !important;
         }
 
         p {
@@ -29,7 +29,7 @@
 
         mark, a {padding: 1px 1ch}
 
-        hr, .script{
+        hr {
             border: 1px var(--dark) solid;
         }
 
@@ -57,15 +57,6 @@
             border-left: 2px var(--dark) solid;
         }
 
-        .script {
-            tab-size: 4;
-            padding: 1ch;
-            border-width: 2px;
-            white-space: pre-wrap;
-            width: 100%;
-            display: block;
-        }
-
         .darkBg, ::selection {background-color: var(--dark);color: var(--light)}
         .lightBg {background-color: var(--light);color: var(--dark)}
         .redBg {background-color: var(--red);color: var(--light)}
@@ -74,19 +65,37 @@
         .greenBg {background-color: var(--green);color: var(--dark)}
         .blueBg {background-color: var(--blue);color: var(--light)}
         .purpleBg {background-color: var(--purple);color: var(--light)}
+
+        /* GitHub Gists */
+        .pl-k {color: var(--red) !important}
+        .pl-en {color: var(--purple) !important}
+        .pl-c {color: var(--green) !important}
+        .pl-smi {color: var(--dark) !important}
+        .pl-c1, .pl-s {color: var(--blue) !important}
+        .blob-code {background-color: var(--light) !important}
+        .blob-num {
+            background-color: var(--light) !important;
+            color: var(--dark) !important;
+        }
+        .gist-data {
+            border-bottom: 2px solid var(--dark) !important;
+        }
+        .gist-meta {
+            background-color: var(--light) !important;
+            color: var(--dark) !important;
+        }
+        .gist-file {
+            border-color: var(--dark) !important;
+            border-width: 2px !important;
+            border-radius: 0 !important;
+        }
+        .gist-meta > a {
+            padding: 1px 1ch !important;
+            background-color: var(--yellow) !important;
+            color: var(--dark) !important;
+        }
     </style>
     <script>
-        // This function will remove all the spaces from the scripts to allow the tabs to work properly.
-        function RemoveSpacesFromScript() {
-            let preList = document.querySelectorAll(".script");
-            console.log(preList);
-            for (let i = 0; i < preList.length; i++) {
-                let code = preList[i].innerHTML;
-                code = code.split('    ').join('');
-                preList[i].innerHTML = code;
-            }
-        }
-
         function hideAndShow(idToHide, idToShow) {
             idToHide.forEach(function (id) {
                 let element = document.getElementById(id);
@@ -99,7 +108,7 @@
         }
     </script>
 </head>
-<body class="darkBg" onload="RemoveSpacesFromScript()">
+<body class="darkBg">
 <div class="section lightBg">
     <h2><mark class="darkBg">Holy Hand Book</mark></h2>
     <hr>
@@ -204,25 +213,7 @@
                     <a class="yellowBg" href="https://learn.unity.com/tutorial/variables-and-functions">Unity Learn</a> -
                     <a class="yellowBg" href="https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/types-and-variables">MS Docs</a>
                 </p>
-                <p class="yellowBg script">
-
-                    public class VariablesAndFunctions : MonoBehaviour
-                    {
-                    	int myInt = 5;
-
-                    	private void Start ()
-                    	{
-                    		myInt = MultiplyByTwo(myInt);
-                    		Debug.Log (myInt);
-                    	}
-
-                    	private int MultiplyByTwo (int number)
-                    	{
-                    		int ret;
-                    		ret = number * 2;
-                    		return ret;
-                    	}
-                    }</p>
+                <script src="https://gist.github.com/jstn-as/3b0260e44c0555658e90769bc8e40c33.js"></script>
             </div>
         </div>
     </div>
