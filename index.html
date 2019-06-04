@@ -74,8 +74,8 @@
         .pl-c1, .pl-s {color: var(--blue) !important}
         .blob-code {background-color: var(--light) !important}
         .blob-num {
-            background-color: var(--light) !important;
-            color: var(--dark) !important;
+            background-color: var(--dark) !important;
+            color: var(--light) !important;
         }
         .gist-data {
             border-bottom: 2px solid var(--dark) !important;
@@ -105,6 +105,26 @@
                 let element = document.getElementById(id[0]);
                 element.style.display = id[1];
             });
+        }
+
+        const palettes =[
+            ['black',  'white',  'red',    'orange', 'yellow', 'green',  'blue',   'purple'],
+            ['#1a1c2c','#f4f4f4','#b13e53','#ef7d57','#ffcd75','#38b764','#3b5dc9','#5d275d'],
+            ['#1b1c33','#fdfdf8','#d32734','#da7d22','#e6da29','#28c641','#2d93dd','#7b53ad'],
+            ['#282828','#ebdbb2','#cc241d','#d65d0e','#d79921','#98971a','#458588','#b16286'],
+            ['#073642','#fdf6e3','#dc322f','#cb4b16','#b58900','#859900','#268bd2','#d33682'],
+        ];
+
+        function changePalette(paletteIndex) {
+            let targetPalette = palettes[paletteIndex];
+            document.documentElement.style.setProperty('--dark', targetPalette[0]);
+            document.documentElement.style.setProperty('--light', targetPalette[1]);
+            document.documentElement.style.setProperty('--red', targetPalette[2]);
+            document.documentElement.style.setProperty('--orange', targetPalette[3]);
+            document.documentElement.style.setProperty('--yellow', targetPalette[4]);
+            document.documentElement.style.setProperty('--green', targetPalette[5]);
+            document.documentElement.style.setProperty('--blue', targetPalette[6]);
+            document.documentElement.style.setProperty('--purple', targetPalette[7]);
         }
     </script>
 </head>
@@ -155,6 +175,7 @@
         <div class="tab">
             <h4>What exactly is the Holy Hand Book?</h4>
             <h4>How did this come about?</h4>
+            <h4>Why the name "Holy Hand Book"?</h4>
             <h4>Credits</h4>
         </div>
         <h3><a class="purpleBg" href="#extra">Extra</a></h3>
@@ -165,23 +186,16 @@
     <hr>
     <p>This section will contain useful tips, tricks and tutorials to make creating games easier</p>
     <div class="left">
-        <h3><mark class="darkBg">Unity</mark> -
-            <span id="hide0" class="click" onclick="hideAndShow(['container0', 'hide0'],[['show0', 'inline']])"><mark class="orangeBg">Hide</mark></span>
-            <span id="show0" class="click" style="display: none" onclick="hideAndShow(['show0'],[['container0', 'block'], ['hide0', 'inline']])"><mark class="orangeBg">Show</mark></span>
+        <h3><mark class="darkBg">Unity</mark>
+            <span id="hide0" class="click" onclick="hideAndShow(['container0', 'hide0'],[['show0', 'inline']])"><mark class="orangeBg">-</mark></span>
+            <span id="show0" class="click" style="display: none" onclick="hideAndShow(['show0'],[['container0', 'block'], ['hide0', 'inline']])"><mark class="orangeBg">+</mark></span>
         </h3>
         <div id="container0" class="tab">
-            <h4>Useful links -
-                <span id="hide00" class="click" onclick="hideAndShow(['container00', 'hide00'],[['show00', 'inline']])"><mark class="orangeBg">Hide</mark></span>
-                <span id="show00" class="click" style="display: none" onclick="hideAndShow(['show00'],[['container00', 'block'], ['hide00', 'inline']])"><mark class="orangeBg">Show</mark></span>
+            <h4>Change play mode tint
+                <span id="hide00" class="click" onclick="hideAndShow(['container00', 'hide00'],[['show00', 'inline']])"><mark class="orangeBg">-</mark></span>
+                <span id="show00" class="click" style="display: none" onclick="hideAndShow(['show00'],[['container00', 'block'], ['hide00', 'inline']])"><mark class="orangeBg">+</mark></span>
             </h4>
             <div id="container00" class="tab">
-                <a class="orangeBg" href="https://unitytip.com/">Unity Tip.com</a>
-            </div>
-            <h4>Change play mode tint -
-                <span id="hide01" class="click" onclick="hideAndShow(['container01', 'hide01'],[['show01', 'inline']])"><mark class="orangeBg">Hide</mark></span>
-                <span id="show01" class="click" style="display: none" onclick="hideAndShow(['show01'],[['container01', 'block'], ['hide01', 'inline']])"><mark class="orangeBg">Show</mark></span>
-            </h4>
-            <div id="container01" class="tab">
                 <p>The biggest mistake that I see a lot of people do when first starting out with Unity is hitting play,
                     testing their game, and then making changes to anything. The problem is that they forget to exit play mode
                     which means that their changes won't save. This tip can help you avoid those situations.</p>
@@ -198,14 +212,14 @@
     <hr>
     <p>I will both keep scripts and snippets to both teach the fundamentals and for my own convenience</p>
     <div class="left">
-        <h3><mark class="darkBg">Unity</mark> -
-            <span id="hide1" class="click" onclick="hideAndShow(['container1', 'hide1'],[['show1', 'inline']])"><mark class="yellowBg">Hide</mark></span>
-            <span id="show1" class="click" style="display: none" onclick="hideAndShow(['show1'],[['container1', 'block'], ['hide1', 'inline']])"><mark class="yellowBg">Show</mark></span>
+        <h3><mark class="darkBg">Unity</mark>
+            <span id="hide1" class="click" onclick="hideAndShow(['container1', 'hide1'],[['show1', 'inline']])"><mark class="yellowBg">-</mark></span>
+            <span id="show1" class="click" style="display: none" onclick="hideAndShow(['show1'],[['container1', 'block'], ['hide1', 'inline']])"><mark class="yellowBg">+</mark></span>
         </h3>
         <div id="container1" class="tab">
-            <h4>Variables -
-                <span id="hide10" class="click" onclick="hideAndShow(['container10', 'hide10'],[['show10', 'inline']])"><mark class="yellowBg">Hide</mark></span>
-                <span id="show10" class="click" style="display: none" onclick="hideAndShow(['show10'],[['container10', 'block'], ['hide10', 'inline']])"><mark class="yellowBg">Show</mark></span>
+            <h4>Variables
+                <span id="hide10" class="click" onclick="hideAndShow(['container10', 'hide10'],[['show10', 'inline']])"><mark class="yellowBg">-</mark></span>
+                <span id="show10" class="click" style="display: none" onclick="hideAndShow(['show10'],[['container10', 'block'], ['hide10', 'inline']])"><mark class="yellowBg">+</mark></span>
             </h4>
             <div id="container10" class="tab">
                 <p>Variables are containers that can store different types of data.</p>
@@ -223,14 +237,14 @@
     <hr>
     <p>This sections contains links</p>
     <div class="left">
-        <h3><mark class="darkBg">Programs</mark> -
-            <span id="hide2" class="click" onclick="hideAndShow(['container2', 'hide2'],[['show2', 'inline']])"><mark class="greenBg">Hide</mark></span>
-            <span id="show2" class="click" style="display: none" onclick="hideAndShow(['show2'],[['container2', 'block'], ['hide2', 'inline']])"><mark class="greenBg">Show</mark></span>
+        <h3><mark class="darkBg">Programs</mark>
+            <span id="hide2" class="click" onclick="hideAndShow(['container2', 'hide2'],[['show2', 'inline']])"><mark class="greenBg">-</mark></span>
+            <span id="show2" class="click" style="display: none" onclick="hideAndShow(['show2'],[['container2', 'block'], ['hide2', 'inline']])"><mark class="greenBg">+</mark></span>
         </h3>
         <div id="container2" class="tab">
-            <h4>Game Engines -
-                <span id="hide20" class="click" onclick="hideAndShow(['container20', 'hide20'],[['show20', 'inline']])"><mark class="greenBg">Hide</mark></span>
-                <span id="show20" class="click" style="display: none" onclick="hideAndShow(['show20'],[['container20', 'block'], ['hide20', 'inline']])"><mark class="greenBg">Show</mark></span>
+            <h4>Game Engines
+                <span id="hide20" class="click" onclick="hideAndShow(['container20', 'hide20'],[['show20', 'inline']])"><mark class="greenBg">-</mark></span>
+                <span id="show20" class="click" style="display: none" onclick="hideAndShow(['show20'],[['container20', 'block'], ['hide20', 'inline']])"><mark class="greenBg">+</mark></span>
             </h4>
             <div id="container20" class="tab">
                 <p>
@@ -262,9 +276,9 @@
                 <p><a href="https://www.unrealengine.com" class="greenBg">Unreal Engine</a></p>
                 <p><a href="https://www.cryengine.com/" class="greenBg">CryEngine</a></p>
             </div>
-            <h4>Frameworks -
-                <span id="hide21" class="click" onclick="hideAndShow(['container21', 'hide21'],[['show21', 'inline']])"><mark class="greenBg">Hide</mark></span>
-                <span id="show21" class="click" style="display: none" onclick="hideAndShow(['show21'],[['container21', 'block'], ['hide21', 'inline']])"><mark class="greenBg">Show</mark></span>
+            <h4>Frameworks
+                <span id="hide21" class="click" onclick="hideAndShow(['container21', 'hide21'],[['show21', 'inline']])"><mark class="greenBg">-</mark></span>
+                <span id="show21" class="click" style="display: none" onclick="hideAndShow(['show21'],[['container21', 'block'], ['hide21', 'inline']])"><mark class="greenBg">+</mark></span>
             </h4>
             <div id="container21" class="tab">
                 <p><a class="greenBg" href="https://love2d.org/">Love 2D</a></p>
@@ -321,7 +335,10 @@
                         model which means you'll be paying monthly or yearly. There are discounts for students.
                     </p>
                 </div>
-                <p><a class="greenBg" href="https://www.aseprite.org/">Aseprite</a></p>
+                <p>
+                    <a class="greenBg" href="https://www.aseprite.org/">Aseprite</a> -
+                    <mark class="darkBg">Pixel Art</mark>
+                </p>
                 <div class="tab">
                     <p>
                         Aseprite is a pixel art tool, while it's not as versatile as Photoshop, it's very specialised
@@ -408,7 +425,14 @@
         <h4>What exactly is the Holy Hand Book?</h4>
         <div class="tab">
             <p>The Holy Hand Book is a website that contains different res to help you with game development.
-                You'll find everything from tips and tricks to links to software and other res.
+                You'll find everything from tips and tricks to links to software and other resources.
+            </p>
+        </div>
+        <h4>Why the name "Holy Hand Book"?</h4>
+        <div class="tab">
+            <p>
+                I was trying to come up solid name, and then a Monty Python play popped into my head.
+                "Holy Hand Grenade" sounds awesome, so that's that.
             </p>
         </div>
         <h4>How did this come about?</h4>
@@ -434,6 +458,17 @@
     <h2 id="extra"><mark class="purpleBg">Extra</mark></h2>
     <hr>
     <p>Everything else goes here!</p>
+    <div class="left">
+        <h4>Palettes</h4>
+        <div class="tab">
+            <p>Enjoy!</p>
+            <p onclick="changePalette(0)"><mark class="purpleBg">Basic</mark></p>
+            <p onclick="changePalette(1)"><mark class="purpleBg">Sweetie 16</mark></p>
+            <p onclick="changePalette(2)"><mark class="purpleBg">Endesga 8</mark></p>
+            <p onclick="changePalette(3)"><mark class="purpleBg">Gruvbox Dark</mark></p>
+            <p onclick="changePalette(4)"><mark class="purpleBg">Solarized Dark</mark></p>
+        </div>
+    </div>
 </div>
 </body>
 </html>
