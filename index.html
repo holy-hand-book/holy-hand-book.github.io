@@ -4,6 +4,7 @@
     <title>
         Holy Hand Book
     </title>
+    <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700" rel="stylesheet">
     <link href="favicon.png" rel="shortcut icon">
     <style>
@@ -27,7 +28,7 @@
             font-size: 12px;
         }
 
-        mark, a {padding: 1px 1ch}
+        mark, a {padding: 0 1ch}
 
         hr {
             border: 1px var(--dark) solid;
@@ -37,6 +38,16 @@
 
         a {
             text-decoration: none;
+        }
+
+        .stick {
+            position: sticky;
+            margin: auto;
+        }
+
+        .stick > h4 {
+            margin: 0;
+            float: right;
         }
 
         .click {
@@ -108,10 +119,10 @@
         }
 
         const palettes =[
-            ['black',  'white',  'red',    'orange', 'yellow', 'green',  'blue',   'purple'],
+            ['black',  'white',  'red',    'orange', 'yellow', 'green',  'blue',   'purple' ],
             ['#1a1c2c','#f4f4f4','#b13e53','#ef7d57','#ffcd75','#38b764','#3b5dc9','#5d275d'],
             ['#1b1c33','#fdfdf8','#d32734','#da7d22','#e6da29','#28c641','#2d93dd','#7b53ad'],
-            ['#282828','#ebdbb2','#cc241d','#d65d0e','#d79921','#98971a','#458588','#b16286'],
+            ['#282828','#ebdbb2','#fb4934','#fe8019','#fabd2f','#b8bb26','#83a598','#d3869b'],
             ['#073642','#fdf6e3','#dc322f','#cb4b16','#b58900','#859900','#268bd2','#d33682'],
             ['#101820','#f0f0dc','#a0694b','#d24040','#fac800','#10c840','#00a0c8','#736464'],
             ['#000000','#dcf5ff','#646964','#d77355','#e6c86e','#64b964','#508cd7','#55415f'],
@@ -128,69 +139,67 @@
             document.documentElement.style.setProperty('--blue', targetPalette[6]);
             document.documentElement.style.setProperty('--purple', targetPalette[7]);
         }
+        
+        function alignSticky() {
+            let stickyElements = document.getElementsByClassName("stick");
+
+            for (let i = 0; i < stickyElements.length; i++) {
+                stickyElements[i].style.top = 8+(19+8)*i +"px";
+                stickyElements[i].style.bottom = 27+(19+8)*(stickyElements.length -1 -i) +"px";
+                let childWidth = stickyElements[i].children[0].offsetWidth;
+                stickyElements[i].style.maxWidth = 800 + ((8 + childWidth) * 2) +"px";
+            }
+        }
     </script>
 </head>
-<body class="darkBg">
+<body class="darkBg" onload="alignSticky()">
+
+<div class="stick">
+    <h4><a class="lightBg" href="#holyHandBook">Back to the top</a></h4>
+</div>
 <div class="section lightBg">
-    <h2><mark class="darkBg">Holy Hand Book</mark></h2>
+    <h2 id="holyHandBook"><mark class="darkBg">Holy Hand Book</mark></h2>
     <hr>
     <p>The holy book of game makers</p>
 </div>
+
+<div class="stick">
+    <h4><a class="redBg" href="#content">Content</a></h4>
+</div>
 <div class="section lightBg">
-    <h2><mark class="redBg">Content</mark></h2>
+    <h2 id="content"><mark class="redBg">Content</mark></h2>
     <hr>
     <p>Use this to get around the book</p>
     <div class="left">
-        <h3><a class="orangeBg" href="#tips-and-tricks">Tips & Tricks</a></h3>
+        <h3><a class="redBg" href="#tipsAndTricks">Tips & Tricks</a></h3>
         <div class="tab">
-            <h4><mark class="darkBg">Unity</mark></h4>
-            <div class="tab">
-                <h4>Useful links</h4>
-                <h4>Change Play mode tint</h4>
-            </div>
+            <h4><a class="darkBg" href="#tipsAndTricks-unity">Unity</a></h4>
         </div>
-        <h3><a class="yellowBg" href="#code">Code</a></h3>
+        <h3><a class="redBg" href="#code">Code</a></h3>
         <div class="tab">
-            <h4><mark class="darkBg">Unity</mark></h4>
-            <div class="tab">
-                <h4>Variables</h4>
-            </div>
+            <h4><a class="darkBg" href="#code-unity">Unity</a></h4>
         </div>
-        <h3><a class="greenBg" href="#res">Resources</a></h3>
+        <h3><a class="redBg" href="#resources">Resources</a></h3>
         <div class="tab">
-            <h4><mark class="darkBg">Programs</mark></h4>
-            <div class="tab">
-                <h4>Game Engines</h4>
-                <h4>Frameworks</h4>
-                <h4>IDEs</h4>
-                <h4>Art</h4>
-                <h4>Modelling</h4>
-                <h4>Source Controls</h4>
-            </div>
-            <h4><mark class="darkBg">People</mark></h4>
-            <div class="tab">
-                <h4>Game Developers</h4>
-                <h4>Artists</h4>
-            </div>
-            <h4><mark class="darkBg">Online</mark></h4>
-            <h4><mark class="darkBg">Distribution</mark></h4>
+            <h4><a class="darkBg" href="#resources-programs">Programs</a></h4>
+            <h4><a class="darkBg" href="#resources-people">People</a></h4>
+            <h4><a class="darkBg" href="#resources-online">Online</a></h4>
+            <h4><a class="darkBg" href="#resources-distribution">Distribution</a></h4>
         </div>
-        <h3><a class="blueBg" href="#about">About</a></h3>
-        <div class="tab">
-            <h4>What exactly is the Holy Hand Book?</h4>
-            <h4>How did this come about?</h4>
-            <h4>Why the name "Holy Hand Book"?</h4>
-            <h4>Credits</h4>
-        </div>
-        <h3><a class="purpleBg" href="#extra">Extra</a></h3>
+        <h3><a class="redBg" href="#about">About</a></h3>
+        <h3><a class="redBg" href="#extra">Extra</a></h3>
     </div>
 </div>
+
+<div class="stick">
+    <h4><a class="orangeBg" href="#tipsAndTricks">Tips & Tricks</a></h4>
+</div>
 <div class="section lightBg">
-    <h2 id="tips-and-tricks"><mark class="orangeBg">Tips & Tricks</mark></h2>
+    <h2 id="tipsAndTricks"><mark class="orangeBg">Tips & Tricks</mark></h2>
     <hr>
     <p>This section will contain useful tips, tricks and tutorials to make creating games easier</p>
     <div class="left">
-        <h3><mark class="darkBg">Unity</mark>
+        <h3 id="tipsAndTricks-unity"><mark class="darkBg">Unity</mark>
             <span id="hide0" class="click" onclick="hideAndShow(['container0', 'hide0'],[['show0', 'inline']])"><mark class="orangeBg">-</mark></span>
             <span id="show0" class="click" style="display: none" onclick="hideAndShow(['show0'],[['container0', 'block'], ['hide0', 'inline']])"><mark class="orangeBg">+</mark></span>
         </h3>
@@ -211,12 +220,16 @@
         </div>
     </div>
 </div>
+
+<div class="stick">
+    <h4><a class="yellowBg" href="#code">Code</a></h4>
+</div>
 <div class="section lightBg">
     <h2 id="code"><mark class="yellowBg">Code</mark></h2>
     <hr>
     <p>I will both keep scripts and snippets to both teach the fundamentals and for my own convenience</p>
     <div class="left">
-        <h3><mark class="darkBg">Unity</mark>
+        <h3 id="code-unity"><mark class="darkBg">Unity</mark>
             <span id="hide1" class="click" onclick="hideAndShow(['container1', 'hide1'],[['show1', 'inline']])"><mark class="yellowBg">-</mark></span>
             <span id="show1" class="click" style="display: none" onclick="hideAndShow(['show1'],[['container1', 'block'], ['hide1', 'inline']])"><mark class="yellowBg">+</mark></span>
         </h3>
@@ -236,17 +249,21 @@
         </div>
     </div>
 </div>
+
+<div class="stick">
+    <h4><a class="greenBg" href="#resources">Resources</a></h4>
+</div>
 <div class="section lightBg">
-    <h2 id="res"><mark class="greenBg">Resources</mark></h2>
+    <h2 id="resources"><mark class="greenBg">Resources</mark></h2>
     <hr>
     <p>This sections contains links</p>
     <div class="left">
-        <h3><mark class="darkBg">Programs</mark>
+        <h3 id="resources-programs"><mark class="darkBg">Programs</mark>
             <span id="hide2" class="click" onclick="hideAndShow(['container2', 'hide2'],[['show2', 'inline']])"><mark class="greenBg">-</mark></span>
             <span id="show2" class="click" style="display: none" onclick="hideAndShow(['show2'],[['container2', 'block'], ['hide2', 'inline']])"><mark class="greenBg">+</mark></span>
         </h3>
         <div id="container2" class="tab">
-            <h4>Game Engines
+            <h4 id="resources-programs-gameEngines">Game Engines
                 <span id="hide20" class="click" onclick="hideAndShow(['container20', 'hide20'],[['show20', 'inline']])"><mark class="greenBg">-</mark></span>
                 <span id="show20" class="click" style="display: none" onclick="hideAndShow(['show20'],[['container20', 'block'], ['hide20', 'inline']])"><mark class="greenBg">+</mark></span>
             </h4>
@@ -254,13 +271,21 @@
                 <p>
                     <a href="https://unity.com/" class="greenBg">Unity</a>
                     <mark class="darkBg">2D / 3D</mark>
+                    <span id="hide200" class="click" onclick="hideAndShow(['container200', 'hide200'],[['show200', 'inline']])"><mark class="greenBg">-</mark></span>
+                    <span id="show200" class="click" style="display: none" onclick="hideAndShow(['show200'],[['container200', 'block'], ['hide200', 'inline']])"><mark class="greenBg">+</mark></span>
                 </p>
-                <div class="tab">
+                <div id="container200" class="tab">
                     <p>
-                        Unity is Jack of Game Engines, you can use it to create pretty much any game you want, be it 3D
-                        or 2D. Due to the free personal edition, it has become one of the most popular game engines. The
-                        programming language of choice is C# which is very versatile and easy to learn. Unity has support
-                        for pretty much any platform including the Switch, which means less work needs to be spent porting!
+                        Languages
+                        <mark class="darkBg">C#</mark>
+                    </p>
+                    <p>
+                        Supported Platforms
+                        are too long to list so here's a <a class="greenBg" href="https://unity3d.com/unity/features/multiplatform">link</a>
+                    </p>
+                    <p>
+                        Unity is the Jack of all trades when it comes to Game Engines as it can be used to create pretty much any type of game for pretty much any platform.
+                        Unity is also free to download and use (Plus and Pro versions come with additional support) which makes it great for beginners who are getting started with game making.
                     </p>
                 </div>
                 <p>
@@ -281,7 +306,7 @@
                 <p><a href="https://www.cryengine.com/" class="greenBg">CryEngine</a></p>
                 <p><a href="https://www.lexaloffle.com/pico-8.php" class="greenBg">Pico 8</a></p>
             </div>
-            <h4>Frameworks
+            <h4 id="resources-programs-frameworks">Frameworks
                 <span id="hide21" class="click" onclick="hideAndShow(['container21', 'hide21'],[['show21', 'inline']])"><mark class="greenBg">-</mark></span>
                 <span id="show21" class="click" style="display: none" onclick="hideAndShow(['show21'],[['container21', 'block'], ['hide21', 'inline']])"><mark class="greenBg">+</mark></span>
             </h4>
@@ -308,7 +333,7 @@
                     </p>
                 </div>
             </div>
-            <h4>IDEs</h4>
+            <h4 id="resources-programs-ides">IDEs</h4>
             <div class="tab">
                 <p><a class="greenBg" href="https://www.jetbrains.com/">JetBrains</a></p>
                 <div class="tab">
@@ -330,7 +355,7 @@
                 <p><a class="greenBg" href="https://atom.io/">Atom</a></p>
                 <p><a class="greenBg" href="https://www.sublimetext.com/">Sublime Text</a></p>
             </div>
-            <h4>Art</h4>
+            <h4 id="resources-programs-art">Art</h4>
             <div class="tab">
                 <p><a class="greenBg" href="https://www.photoshop.com/">Photoshop</a></p>
                 <div class="tab">
@@ -356,14 +381,14 @@
                 <p><a class="greenBg" href="https://krita.org/en/">Krita</a></p>
                 <p><a class="greenBg" href="https://jp.itch.io/playscii">Playscii</a></p>
             </div>
-            <h4>Modelling</h4>
+            <h4 id="resources-programs-modelling">Modelling</h4>
             <div class="tab">
                 <p><a class="greenBg" href="https://www.autodesk.com/products/maya/overview">Maya</a></p>
                 <p><a class="greenBg" href="https://ephtracy.github.io/">MagicaVoxel</a></p>
                 <p><a class="greenBg" href="http://crocotile3d.com/">Crocotile 3D</a></p>
                 <p><a class="greenBg" href="https://www.blender.org/">Blender</a></p>
             </div>
-            <h4>Source Control</h4>
+            <h4 id="resources-programs-sourceControl">Source Control</h4>
             <div class="tab">
                 <p><a class="greenBg" href="https://github.com/">GitHub</a></p>
                 <p><a class="greenBg" href="https://bitbucket.org/">Bitbucket</a></p>
@@ -371,9 +396,9 @@
                 <p><a class="greenBg" href="https://www.gitkraken.com/">GitKraken</a></p>
             </div>
         </div>
-        <h3><mark class="darkBg">People</mark></h3>
+        <h3 id="resources-people"><mark class="darkBg">People</mark></h3>
         <div class="tab">
-            <h4>Game Developers</h4>
+            <h4 id="resources-people-gameDevelopers">Game Developers</h4>
             <div class="tab">
                 <p>
                     Lucas Pope
@@ -399,7 +424,7 @@
                     <a class="greenBg" href="https://store.steampowered.com/publisher/chucklefish">Games</a>
                 </p>
             </div>
-            <h4>Artists</h4>
+            <h4 id="resources-people-artists">Artists</h4>
             <div class="tab">
                 <p>
                     Nauris Amatnieks
@@ -418,9 +443,9 @@
                 </p>
             </div>
         </div>
-        <h3><mark class="darkBg">Online</mark></h3>
+        <h3 id="resources-online"><mark class="darkBg">Online</mark></h3>
         <div class="tab">
-            <h4>Fonts</h4>
+            <h4 id="resources-online-fonts">Fonts</h4>
             <div class="tab">
                 <p><a class="greenBg" href="https://fontstruct.com/">Fontstruct</a></p>
                 <p><a class="greenBg" href="https://fonts.google.com/">Google Fonts</a></p>
@@ -428,13 +453,13 @@
                 <p><a class="greenBg" href="https://app.programmingfonts.org/">Programming Fonts</a></p>
                 <p><a class="greenBg" href="https://www.typewolf.com/">Typewolf</a></p>
             </div>
-            <h4>Palettes</h4>
+            <h4 id="resources-online-palettes">Palettes</h4>
             <div class="tab">
                 <p><a class="greenBg" href="https://lospec.com/palette-list">Lospec</a></p>
                 <p><a class="greenBg" href="https://coolors.co/">Coolors</a></p>
             </div>
         </div>
-        <h3><mark class="darkBg">Distribution</mark></h3>
+        <h3 id="resources-distribution"><mark class="darkBg">Distribution</mark></h3>
         <div class="tab">
             <p><a class="greenBg" href="https://store.steampowered.com/">Steam</a></p>
             <p><a class="greenBg" href="https://www.gog.com/">GOG.com</a></p>
@@ -443,6 +468,10 @@
         </div>
     </div>
 </div>
+
+<div class="stick">
+    <h4><a class="blueBg" href="#about">About</a></h4>
+</div>
 <div class="section lightBg">
     <h2 id="about"><mark class="blueBg">About</mark></h2>
     <hr>
@@ -450,7 +479,7 @@
     <div class="left">
         <h4>What exactly is the Holy Hand Book?</h4>
         <div class="tab">
-            <p>The Holy Hand Book is a website that contains different res to help you with game development.
+            <p>The Holy Hand Book is a website that contains different resources to help you with game development.
                 You'll find everything from tips and tricks to links to software and other resources.
             </p>
         </div>
@@ -483,6 +512,10 @@
         </div>
     </div>
 </div>
+
+<div class="stick">
+    <h4><a class="purpleBg" href="#extra">Extra</a></h4>
+</div>
 <div class="section lightBg">
     <h2 id="extra"><mark class="purpleBg">Extra</mark></h2>
     <hr>
@@ -490,7 +523,7 @@
     <div class="left">
         <h4>Palettes</h4>
         <div class="tab">
-            <p>Enjoy!</p>
+            <p>Try out these cool palettes right here, right now!</p>
             <p onclick="changePalette(0)"><mark class="purpleBg click">Basic</mark></p>
             <p onclick="changePalette(1)"><mark class="purpleBg click">Sweetie 16</mark></p>
             <p onclick="changePalette(2)"><mark class="purpleBg click">Endesga 8</mark></p>
