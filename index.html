@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>
-        Holy Hand Book
-    </title>
+    <title>Holy Hand Book</title>
     <meta charset="UTF-8">
     <meta name="description" content="Resources for Game Development">
     <meta name="keywords" content="Holy,Hand,Book,Game,Development,Resources">
     <meta name="author" content="Justinas Grigas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700" rel="stylesheet">
     <link href="favicon.png" rel="shortcut icon">
     <style>
@@ -27,8 +26,19 @@
         }
 
         p {
-            padding: 0;
-            font-size: 12px;
+            font-size: 1.2vw;
+        }
+
+        h4 {
+            font-size: 1.4vw;
+        }
+
+        h3 {
+            font-size: 1.6vw;
+        }
+
+        h2 {
+            font-size: 1.8vw;
         }
 
         mark, a {padding: 0 1ch}
@@ -48,7 +58,7 @@
             margin: auto;
         }
 
-        .stick > h4 {
+        .stick > h3 {
             margin: 0;
             float: right;
         }
@@ -58,16 +68,16 @@
         }
 
         .section {
-            max-width: 600px;
-            padding: 2px 100px;
-            margin: 10px auto;
+            max-width: 50vw;
+            padding: 2px 8vw;
+            margin: 8px auto;
             text-align: center;
         }
 
         .left {text-align: left}
 
         .tab {
-            padding-left: 4ch;
+            padding-left: 3vw;
             border-left: 2px var(--dark) solid;
         }
 
@@ -147,19 +157,18 @@
             let stickyElements = document.getElementsByClassName("stick");
 
             for (let i = 0; i < stickyElements.length; i++) {
-                stickyElements[i].style.top = 8+(19+8)*i +"px";
-                stickyElements[i].style.bottom = 27+(19+8)*(stickyElements.length -1 -i) +"px";
+                let height = stickyElements[i].childNodes[1].clientHeight;
+                let gap = 8;
+                stickyElements[i].style.top = gap+(height+gap)*i +"px";
+                stickyElements[i].style.bottom = (height+gap) + (height+gap)*(stickyElements.length -1 -i) +"px";
                 let childWidth = stickyElements[i].children[0].offsetWidth;
-                stickyElements[i].style.maxWidth = 800 + ((8 + childWidth) * 2) +"px";
+                let sectionWidth = document.getElementsByClassName("section")[0].clientWidth;
+                stickyElements[i].style.maxWidth = sectionWidth + ((gap + childWidth) * 2) +"px";
             }
         }
     </script>
 </head>
-<body class="darkBg" onload="alignSticky()">
-
-<div class="stick">
-    <h4><a class="lightBg" href="#holyHandBook">Back to the top</a></h4>
-</div>
+<body class="darkBg" onresize="alignSticky()" onload="alignSticky()">
 <div class="section lightBg">
     <h2 id="holyHandBook"><mark class="darkBg">Holy Hand Book</mark></h2>
     <hr>
@@ -167,7 +176,7 @@
 </div>
 
 <div class="stick">
-    <h4><a class="redBg" href="#content">Content</a></h4>
+    <h3><a class="redBg" href="#content">Content</a></h3>
 </div>
 <div class="section lightBg">
     <h2 id="content"><mark class="redBg">Content</mark></h2>
@@ -184,10 +193,9 @@
         </div>
         <h3><a class="redBg" href="#resources">Resources</a></h3>
         <div class="tab">
-            <h4><a class="darkBg" href="#resources-programs">Programs</a></h4>
-            <h4><a class="darkBg" href="#resources-people">People</a></h4>
+            <h4><a class="darkBg" href="#resources-tools">Tools</a></h4>
             <h4><a class="darkBg" href="#resources-online">Online</a></h4>
-            <h4><a class="darkBg" href="#resources-distribution">Distribution</a></h4>
+            <h4><a class="darkBg" href="#resources-publishing">Publishing</a></h4>
         </div>
         <h3><a class="redBg" href="#about">About</a></h3>
         <h3><a class="redBg" href="#extra">Extra</a></h3>
@@ -195,7 +203,7 @@
 </div>
 
 <div class="stick">
-    <h4><a class="orangeBg" href="#tipsAndTricks">Tips & Tricks</a></h4>
+    <h3><a class="orangeBg" href="#tipsAndTricks">Tips & Tricks</a></h3>
 </div>
 <div class="section lightBg">
     <h2 id="tipsAndTricks"><mark class="orangeBg">Tips & Tricks</mark></h2>
@@ -225,7 +233,7 @@
 </div>
 
 <div class="stick">
-    <h4><a class="yellowBg" href="#code">Code</a></h4>
+    <h3><a class="yellowBg" href="#code">Code</a></h3>
 </div>
 <div class="section lightBg">
     <h2 id="code"><mark class="yellowBg">Code</mark></h2>
@@ -244,7 +252,7 @@
             <div id="container10" class="tab">
                 <p>Variables are containers that can store different types of data.</p>
                 <p>
-                    <a class="yellowBg" href="https://learn.unity.com/tutorial/variables-and-functions">Unity Learn</a> -
+                    <a class="yellowBg" href="https://learn.unity.com/tutorial/variables-and-functions">Unity Learn</a>
                     <a class="yellowBg" href="https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/types-and-variables">MS Docs</a>
                 </p>
                 <script src="https://gist.github.com/jstn-as/3b0260e44c0555658e90769bc8e40c33.js"></script>
@@ -254,14 +262,14 @@
 </div>
 
 <div class="stick">
-    <h4><a class="greenBg" href="#resources">Resources</a></h4>
+    <h3><a class="greenBg" href="#resources">Resources</a></h3>
 </div>
 <div class="section lightBg">
     <h2 id="resources"><mark class="greenBg">Resources</mark></h2>
     <hr>
     <p>This sections contains links</p>
     <div class="left">
-        <h3 id="resources-programs"><mark class="darkBg">Programs</mark>
+        <h3 id="resources-tools"><mark class="darkBg">Tools</mark>
             <span id="hide2" class="click" onclick="hideAndShow(['container2', 'hide2'],[['show2', 'inline']])"><mark class="greenBg">-</mark></span>
             <span id="show2" class="click" style="display: none" onclick="hideAndShow(['show2'],[['container2', 'block'], ['hide2', 'inline']])"><mark class="greenBg">+</mark></span>
         </h3>
@@ -271,6 +279,10 @@
                 <span id="show20" class="click" style="display: none" onclick="hideAndShow(['show20'],[['container20', 'block'], ['hide20', 'inline']])"><mark class="greenBg">+</mark></span>
             </h4>
             <div id="container20" class="tab">
+                <p>The Game Engine is probably the most important tool when it comes to creating a game. The engine
+                    usually dictates what programming language the game's code will be written in and what platforms
+                    the game will support.</p>
+                <hr>
                 <p>
                     <a href="https://unity.com/" class="greenBg">Unity</a>
                     <mark class="darkBg">2D / 3D</mark>
@@ -289,6 +301,7 @@
                     <p>
                         Unity is the Jack of all trades when it comes to Game Engines as it can be used to create pretty much any type of game for pretty much any platform.
                         Unity is also free to download and use (Plus and Pro versions come with additional support) which makes it great for beginners who are getting started with game making.
+                        Since Unity is free, it also means that there's a lot of support that's out there making learning the engine relatively easy.
                     </p>
                 </div>
                 <p>
@@ -314,6 +327,10 @@
                 <span id="show21" class="click" style="display: none" onclick="hideAndShow(['show21'],[['container21', 'block'], ['hide21', 'inline']])"><mark class="greenBg">+</mark></span>
             </h4>
             <div id="container21" class="tab">
+                <p>
+                    A framework is simmilar to a Games Engine, however they tend to come without a GUI.
+                </p>
+                <hr>
                 <p><a class="greenBg" href="https://love2d.org/">Love 2D</a></p>
                 <div class="tab">
                     <p>
@@ -355,6 +372,7 @@
                         Visual Studio is a free IDE from Microsoft that can be used for pretty much anything.
                     </p>
                 </div>
+                <p><a class="greenBg" href="https://code.visualstudio.com/">Visual Studio Code</a></p>
                 <p><a class="greenBg" href="https://atom.io/">Atom</a></p>
                 <p><a class="greenBg" href="https://www.sublimetext.com/">Sublime Text</a></p>
             </div>
@@ -398,56 +416,12 @@
                 <p><a class="greenBg" href="https://desktop.github.com/">GitHub Desktop</a></p>
                 <p><a class="greenBg" href="https://www.gitkraken.com/">GitKraken</a></p>
             </div>
-        </div>
-        <h3 id="resources-people"><mark class="darkBg">People</mark></h3>
-        <div class="tab">
-            <h4 id="resources-people-gameDevelopers">Game Developers</h4>
+            <h4 id="resources-programs-soundDesign">Sound Design</h4>
             <div class="tab">
-                <p>
-                    Lucas Pope
-                    <a class="greenBg" href="https://twitter.com/dukope">Twitter</a>
-                    <a class="greenBg" href="https://dukope.com/">Website</a>
-                </p>
-                <p>
-                    Daniel "managore" Linssen
-                    <a class="greenBg" href="https://twitter.com/Managore">Twitter</a>
-                    <a class="greenBg" href="http://daniellinssen.net/">Website</a>
-                    <a class="greenBg" href="https://managore.itch.io/">Games</a>
-                </p>
-                <p>
-                    Nitrome
-                    <a class="greenBg" href="https://twitter.com/Nitrome">Twitter</a>
-                    <a class="greenBg" href="http://wwhttps://www.aseprite.org/w.nitrome.com/">Website</a>
-                    <a class="greenBg" href="http://www.nitrome.com/all-games/">Games</a>
-                </p>
-                <p>
-                    Chucklefish
-                    <a class="greenBg" href="https://twitter.com/ChucklefishLTD">Twitter</a>
-                    <a class="greenBg" href="https://chucklefish.org/">Website</a>
-                    <a class="greenBg" href="https://store.steampowered.com/publisher/chucklefish">Games</a>
-                </p>
+                <p><a class="greenBg" href="https://lmms.io/">LMMS</a></p>
+                <p><a class="greenBg" href="https://www.bfxr.net/">Bfxr</a></p>
+                <p><a class="greenBg" href="https://boscaceoil.net/">Bosca Ceoil</a></p>
             </div>
-            <h4 id="resources-people-artists">Artists</h4>
-            <div class="tab">
-                <p>
-                    Nauris Amatnieks
-                    <a class="greenBg" href="https://twitter.com/Namatnieks">Twitter</a>
-                    <a class="greenBg" href="https://www.patreon.com/Namatnieks">Patreon</a>
-                </p>
-                <p>
-                    Thomas "Cyangmou" Feichtmeir
-                    <a class="greenBg" href="https://twitter.com/cyangmou">Twitter</a>
-                    <a class="greenBg" href="https://www.deviantart.com/cyangmou">DeviantArt</a>
-                </p>
-                <p>
-                    Lu Nascimento
-                    <a class="greenBg" href="https://twitter.com/viiolaceus">Twitter</a>
-                    <a class="greenBg" href="https://www.lucianascimento.com/">Website</a>
-                </p>
-            </div>
-        </div>
-        <h3 id="resources-online"><mark class="darkBg">Online</mark></h3>
-        <div class="tab">
             <h4 id="resources-online-fonts">Fonts</h4>
             <div class="tab">
                 <p><a class="greenBg" href="https://fontstruct.com/">Fontstruct</a></p>
@@ -462,18 +436,46 @@
                 <p><a class="greenBg" href="https://coolors.co/">Coolors</a></p>
             </div>
         </div>
-        <h3 id="resources-distribution"><mark class="darkBg">Distribution</mark></h3>
+        <h3 id="resources-online"><mark class="darkBg">Online</mark></h3>
         <div class="tab">
-            <p><a class="greenBg" href="https://store.steampowered.com/">Steam</a></p>
-            <p><a class="greenBg" href="https://www.gog.com/">GOG.com</a></p>
+            <p>Forums</p>
+            <div class="tab">
+                <p><a class="greenBg" href="https://pixelation.org/">Pixelation</a></p>
+                <p><a class="greenBg" href="http://pixeljoint.com/forum/">Pixel Joint Forum</a></p>
+            </div>
+            <p>Assets</p>
+            <div class="tab">
+                <p><a class="greenBg" href="https://opengameart.org/">Open Game Art</a></p>
+                <p><a class="greenBg" href="https://www.kenney.nl/assets">Kenney</a></p>
+            </div>
+            <p>Showcase</p>
+            <div class="tab">
+                <p><a class="greenBg" href="https://www.artstation.com/">Artstation</a></p>
+                <p><a class="greenBg" href="https://sketchfab.com/feed">Sketchfab</a></p>
+            </div>
+        </div>
+        <h3 id="resources-publishing"><mark class="darkBg">Publishing</mark></h3>
+        <div class="tab">
+            <p>Making a game is great, getting it out to people is even better, but to do so, you need to find a place to publish your game.</p>
+            <hr>
             <p><a class="greenBg" href="https://itch.io/">Itch.io</a></p>
+            <div class="tab">
+                <p>
+                    Itch.io makes it easy and free for anyone to publish their games. All you need to do is to create a
+                    free account and set up a project. You can then change everything from monetization to embedding.
+                </p>
+            </div>
+            <p><a class="greenBg" href="https://partner.steamgames.com/doc/gettingstarted">Steamworks</a></p>
+            <p><a class="greenBg" href="https://www.gog.com/indie">GOG.com</a></p>
+            <p><a class="greenBg" href="https://www.humblebundle.com/publishing">Humble Publishing</a></p>
             <p><a class="greenBg" href="https://discordapp.com/sell-your-game">Discord</a></p>
+            <p><a class="greenBg" href="https://developer.android.com/distribute">Play Store</a></p>
         </div>
     </div>
 </div>
 
 <div class="stick">
-    <h4><a class="blueBg" href="#about">About</a></h4>
+    <h3><a class="blueBg" href="#about">About</a></h3>
 </div>
 <div class="section lightBg">
     <h2 id="about"><mark class="blueBg">About</mark></h2>
@@ -496,17 +498,28 @@
         </div>
         <h4>How did this come about?</h4>
         <div class="tab">
-            <p>This project originally started out when a friend asked me for tips to help him with Unity. I created a
-                text file with tons of tips, tricks and links and realised that a website would be a much better format
-                for this. So here we are.
+            <p>
+                This project originally started out when my best friend asked me for tips to help him with Unity.
+                I created a text file with tons of tips, tricks and links and realised that a website would be a much
+                better format for this. So here we are.
             </p>
         </div>
         <h4>Credits</h4>
         <div>
             <div class="tab">
-                <p>Created by: <a class="blueBg" href="https://jstn-as.github.io/">Justinas "jstn_as" Grigas</a></p>
-                <p>Hosted on: <a class="blueBg" href="https://github.com/holy-hand-book/holy-hand-book.github.io">GitHub</a></p>
-                <p>Font: <a class="blueBg" href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a></p>
+                <p>
+                    Created by:
+                    <a class="blueBg" href="https://jstn-as.github.io/">Justinas "jstn_as" Grigas</a>
+                </p>
+                <p>
+                    Hosted on:
+                    <a class="blueBg" href="https://github.com/holy-hand-book/holy-hand-book.github.io">GitHub</a>
+                </p>
+                <p>
+                    Font:
+                    <a class="blueBg" href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a> by
+                    <a class="blueBg" href="https://twitter.com/cr64">Christian Robertson</a>
+                </p>
                 <p>
                     Palette: <a class="blueBg" href="https://lospec.com/palette-list/sweetie-16">Sweetie 16</a>
                     by <a class="blueBg" href="https://grafxkid.tumblr.com/palettes">GrafxKid</a>
@@ -517,7 +530,7 @@
 </div>
 
 <div class="stick">
-    <h4><a class="purpleBg" href="#extra">Extra</a></h4>
+    <h3><a class="purpleBg" href="#extra">Extra</a></h3>
 </div>
 <div class="section lightBg">
     <h2 id="extra"><mark class="purpleBg">Extra</mark></h2>
