@@ -21,6 +21,15 @@
             --purple: #5d275d;
         }
 
+        .darkBg, ::selection {background-color: var(--dark);color: var(--light)}
+        .lightBg {background-color: var(--light);color: var(--dark)}
+        .redBg {background-color: var(--red);color: var(--light)}
+        .orangeBg {background-color: var(--orange);color: var(--dark)}
+        .yellowBg {background-color: var(--yellow);color: var(--dark)}
+        .greenBg {background-color: var(--green);color: var(--dark)}
+        .blueBg {background-color: var(--blue);color: var(--light)}
+        .purpleBg {background-color: var(--purple);color: var(--light)}
+
         * {
             font-family: 'Roboto Mono', monospace !important;
         }
@@ -47,8 +56,6 @@
             border: 1px var(--dark) solid;
         }
 
-        /*.script::first-line {line-height: 0}*/
-
         a {
             text-decoration: none;
         }
@@ -61,6 +68,7 @@
         .stick > h3 {
             margin: 0;
             float: right;
+            border: 2px solid var(--dark);
         }
 
         .click {
@@ -81,14 +89,12 @@
             border-left: 2px var(--dark) solid;
         }
 
-        .darkBg, ::selection {background-color: var(--dark);color: var(--light)}
-        .lightBg {background-color: var(--light);color: var(--dark)}
-        .redBg {background-color: var(--red);color: var(--light)}
-        .orangeBg {background-color: var(--orange);color: var(--dark)}
-        .yellowBg {background-color: var(--yellow);color: var(--dark)}
-        .greenBg {background-color: var(--green);color: var(--dark)}
-        .blueBg {background-color: var(--blue);color: var(--light)}
-        .purpleBg {background-color: var(--purple);color: var(--light)}
+        /* Small screens. */
+        @media screen and (max-width: 800px) {
+            .section {
+                max-width: 100%;
+            }
+        }
 
         /* GitHub Gists */
         .gist .blob-code-inner {
@@ -100,6 +106,10 @@
         }
         .gist .blob-num {
             font-size: 1.2vw !important;
+        }
+
+        .gist .blob-code, .gist .blob-num {
+            line-height: unset !important;
         }
         .pl-k {color: var(--red) !important}
         .pl-en {color: var(--purple) !important}
@@ -206,6 +216,7 @@
             <h4><a class="darkBg" href="#resources-tools">Tools</a></h4>
             <h4><a class="darkBg" href="#resources-online">Online</a></h4>
             <h4><a class="darkBg" href="#resources-publishing">Publishing</a></h4>
+            <h4><a class="darkBg" href="#resources-tutorials">Tutorials</a></h4>
         </div>
         <h3><a class="redBg" href="#about">About</a></h3>
         <h3><a class="redBg" href="#extra">Extra</a></h3>
@@ -260,12 +271,24 @@
                 <span id="show10" class="click" style="display: none" onclick="hideAndShow(['show10'],[['container10', 'block'], ['hide10', 'inline']])"><mark class="yellowBg">+</mark></span>
             </h4>
             <div id="container10" class="tab">
-                <p>Variables are containers that can store different types of data.</p>
+                <p>Variables are containers that can store different types of data. You can use them to keep track of things like player health, movement speed and so on.</p>
                 <p>
                     <a class="yellowBg" href="https://learn.unity.com/tutorial/variables-and-functions">Unity Learn</a>
                     <a class="yellowBg" href="https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/types-and-variables">MS Docs</a>
                 </p>
                 <script src="https://gist.github.com/jstn-as/3b0260e44c0555658e90769bc8e40c33.js"></script>
+            </div>
+            <h4>Components
+                <span id="hide11" class="click" onclick="hideAndShow(['container11', 'hide11'],[['show11', 'inline']])"><mark class="yellowBg">-</mark></span>
+                <span id="show11" class="click" style="display: none" onclick="hideAndShow(['show11'],[['container11', 'block'], ['hide11', 'inline']])"><mark class="yellowBg">+</mark></span>
+            </h4>
+            <div id="container11" class="tab">
+                <p>
+                    Components are the building blocks of Game Objects that have their own jobs.
+                    For example, every Game Object will always have a Transform component which keeps track of the position, rotation and scale of the object.</p>
+                <p>
+                    <a class="yellowBg" href="https://docs.unity3d.com/Manual/Components.html">Unity Docs</a>
+                </p>
             </div>
         </div>
     </div>
@@ -331,6 +354,9 @@
                 <p><a href="https://www.unrealengine.com" class="greenBg">Unreal Engine</a></p>
                 <p><a href="https://www.cryengine.com/" class="greenBg">CryEngine</a></p>
                 <p><a href="https://www.lexaloffle.com/pico-8.php" class="greenBg">Pico 8</a></p>
+                <p><a href="https://armory3d.org/" class="greenBg">Armory 3D</a></p>
+                <p><a href="https://coronalabs.com/product/" class="greenBg">Corona</a></p>
+                <p><a href="https://coronalabs.com/product/" class="greenBg">Corona</a></p>
             </div>
             <h4 id="resources-programs-frameworks">Frameworks
                 <span id="hide21" class="click" onclick="hideAndShow(['container21', 'hide21'],[['show21', 'inline']])"><mark class="greenBg">-</mark></span>
@@ -338,7 +364,7 @@
             </h4>
             <div id="container21" class="tab">
                 <p>
-                    A framework is simmilar to a Games Engine, however they tend to come without a GUI.
+                    A framework is simmilar to a Games Engine, however they tend to come without a GUI which means most of the work is done through pure programming.
                 </p>
                 <hr>
                 <p><a class="greenBg" href="https://love2d.org/">Love 2D</a></p>
@@ -362,6 +388,8 @@
                         receiving updates since, it's been used to create popular games like Half-Life.
                     </p>
                 </div>
+                <p><a class="greenBg" href="https://www.microsoft.com/en-us/download/details.aspx?id=23714">XNA Game Studio</a></p>
+                <p><a class="greenBg" href="https://haxe.org/use-cases/games/">Haxe</a></p>
             </div>
             <h4 id="resources-programs-ides">IDEs</h4>
             <div class="tab">
@@ -406,6 +434,7 @@
                         meaning it has a lot of tools and features to make drawing pixel art easier.
                     </p>
                 </div>
+                <p><a class="greenBg" href="https://graphicsgale.com/us/">Graphics Gale</a></p>
                 <p><a class="greenBg" href="https://www.pyxeledit.com/">Pyxel Edit</a></p>
                 <p><a class="greenBg" href="https://www.cosmigo.com/">Pro Motion NG</a></p>
                 <p><a class="greenBg" href="https://www.gimp.org/">GIMP</a></p>
@@ -414,10 +443,13 @@
             </div>
             <h4 id="resources-programs-modelling">Modelling</h4>
             <div class="tab">
+                <p><a class="greenBg" href="https://www.blender.org/">Blender</a></p>
                 <p><a class="greenBg" href="https://www.autodesk.com/products/maya/overview">Maya</a></p>
                 <p><a class="greenBg" href="https://ephtracy.github.io/">MagicaVoxel</a></p>
                 <p><a class="greenBg" href="http://crocotile3d.com/">Crocotile 3D</a></p>
-                <p><a class="greenBg" href="https://www.blender.org/">Blender</a></p>
+                <p><a class="greenBg" href="http://pixologic.com/features/">ZBrush</a></p>
+                <p><a class="greenBg" href="https://www.maxon.net/en-us/products/cinema-4d/overview/">Cinema 4D</a></p>
+                <p><a class="greenBg" href="https://www.autodesk.co.uk/products/3ds-max/overview">3DS MAX</a></p>
             </div>
             <h4 id="resources-programs-sourceControl">Source Control</h4>
             <div class="tab">
@@ -480,6 +512,31 @@
             <p><a class="greenBg" href="https://www.humblebundle.com/publishing">Humble Publishing</a></p>
             <p><a class="greenBg" href="https://discordapp.com/sell-your-game">Discord</a></p>
             <p><a class="greenBg" href="https://developer.android.com/distribute">Play Store</a></p>
+        </div>
+        <h3 id="resources-tutorials"><mark class="darkBg">Tutorials</mark></h3>
+        <div class="tab">
+            <p>Getting into Games Design can be a hard task if you don't know where to look, but with enough help and research it's more than possible for anyone to get into game making.</p>
+            <hr>
+            <p>Books</p>
+            <div class="tab">
+                <p><a class="greenBg" href="https://books.google.co.uk/books?id=8w_ETFmHrewC&printsec=frontcover#v=onepage&q&f=false">Level Up!: The Guide to Great Video Game Design</a></p>
+                <p><a class="greenBg" href="https://books.google.co.uk/books?id=kRMeBQAAQBAJ&printsec=frontcover#v=onepage&q&f=false">The Art of Game Design: A Book of Lenses, Second Edition</a></p>
+                <p><a class="greenBg" href="https://books.google.co.uk/books?id=jYdqQ4YdccYC&printsec=frontcover#v=onepage&q&f=false">Theory of Fun for Game Design</a></p>
+            </div>
+            <p>YouTubers</p>
+            <div class="tab">
+                <p><a class="greenBg" href="https://www.youtube.com/user/Brackeys/">Brackeys</a></p>
+                <p><a class="greenBg" href="https://www.youtube.com/channel/UC9Z1XWw1kmnvOOFsj6Bzy2g">Blackthornprod</a></p>
+                <p><a class="greenBg" href="https://www.youtube.com/channel/UCd_lJ4zSp9wZDNyeKCWUstg">Ask Gamedev</a></p>
+                <p><a class="greenBg" href="https://www.youtube.com/user/ExtraCreditz">Extra Credits</a></p>
+            </div>
+            <p>Programming</p>
+            <div class="tab">
+                <p><a class="greenBg" href="https://www.khanacademy.org/">Khan Academy</a></p>
+                <p><a class="greenBg" href="https://www.codecademy.com/">Codecademy</a></p>
+                <p><a class="greenBg" href="https://code.org/">Code.org</a></p>
+                <p><a class="greenBg" href="https://www.codewars.com/">Codewars</a></p>
+            </div>
         </div>
     </div>
 </div>
