@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="description" content="Resources for Game Development">
     <meta name="keywords" content="Holy,Hand,Book,Game,Development,Resources">
-    <meta name="author" content="Justinas Grigas">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700" rel="stylesheet">
-    <link href="favicon.png" rel="shortcut icon">
     <style>
         :root {
             --dark: #1a1c2c;
@@ -89,23 +85,12 @@
             border-left: 2px var(--dark) solid;
         }
 
-        /* Small screens. */
-        @media screen and (max-width: 800px) {
-            .section {
-                max-width: 100%;
-            }
-        }
-
         /* GitHub Gists */
-        .gist .blob-code-inner {
+        .gist .blob-code-inner, .gist .gist-meta, .gist .blob-num {
             font-size: 1.2vw !important;
         }
         .gist .gist-meta {
-            font-size: 1.2vw !important;
             font-family: 'Roboto Mono', monospace !important;
-        }
-        .gist .blob-num {
-            font-size: 1.2vw !important;
         }
 
         .gist .blob-code, .gist .blob-num {
@@ -138,7 +123,38 @@
             background-color: var(--yellow) !important;
             color: var(--dark) !important;
         }
+
+        /* Small screens. */
+        @media screen and (max-width: 800px) {
+            .section {
+                max-width: 100%;
+            }
+
+            p {
+                font-size: 2vw;
+            }
+
+            h4 {
+                font-size: 2.2vw;
+            }
+
+            h3 {
+                font-size: 2.4vw;
+            }
+
+            h2 {
+                font-size: 2.6vw;
+            }
+
+            .gist .blob-code-inner, .gist .gist-meta, .gist .blob-num {
+                font-size: 2vw !important;
+            }
+        }
     </style>
+    <meta name="author" content="Justinas Grigas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700" rel="stylesheet">
+    <link href="favicon.png" rel="shortcut icon">
     <script>
         function hideAndShow(idToHide, idToShow) {
             idToHide.forEach(function (id) {
