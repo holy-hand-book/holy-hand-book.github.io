@@ -207,7 +207,6 @@
 <body class="darkBg" onresize="alignSticky()" onload="alignSticky()">
 <div class="section lightBg">
     <h2 id="holyHandBook"><mark class="darkBg">Holy Hand Book</mark></h2>
-    <hr>
     <p>The holy book of game makers</p>
 </div>
 
@@ -216,8 +215,8 @@
 </div>
 <div class="section lightBg">
     <h2 id="content"><mark class="redBg">Content</mark></h2>
-    <hr>
     <p>Use this to get around the book</p>
+    <hr>
     <div class="left">
         <h3><a class="redBg" href="#tipsAndTricks">Tips & Tricks</a></h3>
         <div class="tab">
@@ -244,8 +243,8 @@
 </div>
 <div class="section lightBg">
     <h2 id="tipsAndTricks"><mark class="orangeBg">Tips & Tricks</mark></h2>
-    <hr>
     <p>This section will contain useful tips, tricks and tutorials to make creating games easier</p>
+    <hr>
     <div class="left">
         <h3 id="tipsAndTricks-unity"><mark class="darkBg">Unity</mark>
             <span id="hide0" class="click" onclick="hideAndShow(['container0', 'hide0'],[['show0', 'inline']])"><mark class="orangeBg">-</mark></span>
@@ -274,8 +273,8 @@
 </div>
 <div class="section lightBg">
     <h2 id="code"><mark class="yellowBg">Code</mark></h2>
-    <hr>
     <p>I will both keep scripts and snippets to both teach the fundamentals and for my own convenience</p>
+    <hr>
     <div class="left">
         <h3 id="code-unity"><mark class="darkBg">Unity</mark>
             <span id="hide1" class="click" onclick="hideAndShow(['container1', 'hide1'],[['show1', 'inline']])"><mark class="yellowBg">-</mark></span>
@@ -306,6 +305,16 @@
                     <a class="yellowBg" href="https://docs.unity3d.com/Manual/Components.html">Unity Docs</a>
                 </p>
             </div>
+            <h4>2D Platformer Player Movement
+                <span id="hide12" class="click" onclick="hideAndShow(['container12', 'hide12'],[['show12', 'inline']])"><mark class="yellowBg">-</mark></span>
+                <span id="show12" class="click" style="display: none" onclick="hideAndShow(['show12'],[['container12', 'block'], ['hide12', 'inline']])"><mark class="yellowBg">+</mark></span>
+            </h4>
+            <div id="container12" class="tab">
+                <p>
+                    <a class="yellowBg" href="https://youtu.be/dwcT-Dch0bA">Brackeys</a>
+                    <a class="yellowBg" href="https://youtu.be/QGDeafTx5ug">Blackthornprod</a>
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -315,8 +324,8 @@
 </div>
 <div class="section lightBg">
     <h2 id="resources"><mark class="greenBg">Resources</mark></h2>
-    <hr>
     <p>This sections contains links</p>
+    <hr>
     <div class="left">
         <h3 id="resources-tools"><mark class="darkBg">Tools</mark>
             <span id="hide2" class="click" onclick="hideAndShow(['container2', 'hide2'],[['show2', 'inline']])"><mark class="greenBg">-</mark></span>
@@ -345,7 +354,12 @@
                     </p>
                     <p>
                         Supported Platforms
-                        are too long to list so here's a <a class="greenBg" href="https://unity3d.com/unity/features/multiplatform">link</a>
+                        <mark class="darkBg">Desktop</mark>
+                        <mark class="darkBg">Console</mark>
+                        <mark class="darkBg">Mobile</mark>
+                        <mark class="darkBg">Web</mark>
+                        <mark class="darkBg">VR</mark>
+                        <a class="greenBg" href="https://unity3d.com/unity/features/multiplatform">More</a>
                     </p>
                     <p>
                         Unity is the Jack of all trades when it comes to Game Engines as it can be used to create pretty much any type of game for pretty much any platform.
@@ -359,6 +373,20 @@
                 </p>
                 <div class="tab">
                     <p>
+                        Languages
+                        <mark class="darkBg">GDScript</mark>
+                        <mark class="darkBg">C#</mark>
+                        <mark class="darkBg">C++</mark>
+                        <mark class="darkBg">Visual Script</mark>
+                        <a class="greenBg" href="https://godotengine.org/features">More</a>
+                    </p>
+                    <p>
+                        Supported Platforms
+                        <mark class="darkBg">Desktop</mark>
+                        <mark class="darkBg">Mobile</mark>
+                        <mark class="darkBg">Web</mark>
+                    </p>
+                    <p>
                         The open source alternative to Unity, which means that it has a huge community of developers
                         working on it, making this one of the fastest growing engines. You too can modify it in any way
                         you want. There's support for a big range of languages like C++, C#, Visual Scripting and even
@@ -368,10 +396,16 @@
                     </p>
                 </div>
                 <p><a href="https://www.unrealengine.com" class="greenBg">Unreal Engine</a></p>
+                <div class="tab">
+                    <p>
+                        Languages
+                        <mark class="darkBg">C++</mark>
+                        <mark class="darkBg">Visual Script</mark>
+                    </p>
+                </div>
                 <p><a href="https://www.cryengine.com/" class="greenBg">CryEngine</a></p>
                 <p><a href="https://www.lexaloffle.com/pico-8.php" class="greenBg">Pico 8</a></p>
                 <p><a href="https://armory3d.org/" class="greenBg">Armory 3D</a></p>
-                <p><a href="https://coronalabs.com/product/" class="greenBg">Corona</a></p>
                 <p><a href="https://coronalabs.com/product/" class="greenBg">Corona</a></p>
             </div>
             <h4 id="resources-programs-frameworks">Frameworks
@@ -380,7 +414,8 @@
             </h4>
             <div id="container21" class="tab">
                 <p>
-                    A framework is simmilar to a Games Engine, however they tend to come without a GUI which means most of the work is done through pure programming.
+                    Frameworks are essentially stripped down versions of Game Engines. In exchange for fancy features,
+                    you get a lower level access which means better performance.
                 </p>
                 <hr>
                 <p><a class="greenBg" href="https://love2d.org/">Love 2D</a></p>
@@ -543,8 +578,9 @@
             <div class="tab">
                 <p><a class="greenBg" href="https://www.youtube.com/user/Brackeys/">Brackeys</a></p>
                 <p><a class="greenBg" href="https://www.youtube.com/channel/UC9Z1XWw1kmnvOOFsj6Bzy2g">Blackthornprod</a></p>
-                <p><a class="greenBg" href="https://www.youtube.com/channel/UCd_lJ4zSp9wZDNyeKCWUstg">Ask Gamedev</a></p>
+                <p><a class="greenBg" href="https://www.youtube.com/channel/UCuHVjteDW9tCb8QqMrtGvwQ">Thomas Brush</a></p>
                 <p><a class="greenBg" href="https://www.youtube.com/user/ExtraCreditz">Extra Credits</a></p>
+                <p><a class="greenBg" href="https://www.youtube.com/channel/UCd_lJ4zSp9wZDNyeKCWUstg">Ask Gamedev</a></p>
             </div>
             <p>Programming</p>
             <div class="tab">
@@ -562,8 +598,8 @@
 </div>
 <div class="section lightBg">
     <h2 id="about"><mark class="blueBg">About</mark></h2>
-    <hr>
     <p>This sections contains all the information about Holy Hand Book</p>
+    <hr>
     <div class="left">
         <h4>What exactly is the Holy Hand Book?</h4>
         <div class="tab">
@@ -617,12 +653,13 @@
 </div>
 <div class="section lightBg">
     <h2 id="extra"><mark class="purpleBg">Extra</mark></h2>
-    <hr>
     <p>Everything else goes here!</p>
+    <hr>
     <div class="left">
         <h4>Palettes</h4>
         <div class="tab">
             <p>Try out these cool palettes right here, right now!</p>
+            <hr>
             <p onclick="changePalette(0)"><mark class="purpleBg click">Basic</mark></p>
             <p onclick="changePalette(1)"><mark class="purpleBg click">Sweetie 16</mark></p>
             <p onclick="changePalette(2)"><mark class="purpleBg click">Endesga 8</mark></p>
