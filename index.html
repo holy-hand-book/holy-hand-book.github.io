@@ -30,22 +30,6 @@
             font-family: 'Roboto Mono', monospace !important;
         }
 
-        p {
-            font-size: 1.2vw;
-        }
-
-        h4 {
-            font-size: 1.4vw;
-        }
-
-        h3 {
-            font-size: 1.6vw;
-        }
-
-        h2 {
-            font-size: 1.8vw;
-        }
-
         mark, a {padding: 0 1ch}
 
         hr {
@@ -81,74 +65,8 @@
         .left {text-align: left}
 
         .tab {
-            padding-left: 3vw;
+            padding-left: 4ch;
             border-left: 2px var(--dark) solid;
-        }
-
-        /* GitHub Gists */
-        .gist .blob-code-inner, .gist .gist-meta, .gist .blob-num {
-            font-size: 1.2vw !important;
-        }
-        .gist .gist-meta {
-            font-family: 'Roboto Mono', monospace !important;
-        }
-
-        .gist .blob-code, .gist .blob-num {
-            line-height: unset !important;
-        }
-        .pl-k {color: var(--red) !important}
-        .pl-en {color: var(--purple) !important}
-        .pl-c {color: var(--green) !important}
-        .pl-smi {color: var(--dark) !important}
-        .pl-c1, .pl-s {color: var(--blue) !important}
-        .blob-code {background-color: var(--light) !important}
-        .blob-num {
-            background-color: var(--dark) !important;
-            color: var(--light) !important;
-        }
-        .gist-data {
-            border-bottom: 2px solid var(--dark) !important;
-        }
-        .gist-meta {
-            background-color: var(--light) !important;
-            color: var(--dark) !important;
-        }
-        .gist-file {
-            border-color: var(--dark) !important;
-            border-width: 2px !important;
-            border-radius: 0 !important;
-        }
-        .gist-meta > a {
-            padding: 1px 1ch !important;
-            background-color: var(--yellow) !important;
-            color: var(--dark) !important;
-        }
-
-        /* Small screens. */
-        @media screen and (max-width: 800px) {
-            .section {
-                max-width: 100%;
-            }
-
-            p {
-                font-size: 2vw;
-            }
-
-            h4 {
-                font-size: 2.2vw;
-            }
-
-            h3 {
-                font-size: 2.4vw;
-            }
-
-            h2 {
-                font-size: 2.6vw;
-            }
-
-            .gist .blob-code-inner, .gist .gist-meta, .gist .blob-num {
-                font-size: 2vw !important;
-            }
         }
     </style>
     <meta name="author" content="Justinas Grigas">
@@ -513,15 +431,16 @@
             <div class="tab">
                 <p><a class="greenBg" href="https://lmms.io/">LMMS</a></p>
                 <p><a class="greenBg" href="https://www.bfxr.net/">Bfxr</a></p>
+                <p><a class="greenBg" href="http://drpetter.se/project_sfxr.html">Sfxr</a></p>
                 <p><a class="greenBg" href="https://boscaceoil.net/">Bosca Ceoil</a></p>
             </div>
             <h4 id="resources-online-fonts">Fonts</h4>
             <div class="tab">
-                <p><a class="greenBg" href="https://fontstruct.com/">Fontstruct</a></p>
                 <p><a class="greenBg" href="https://fonts.google.com/">Google Fonts</a></p>
                 <p><a class="greenBg" href="https://www.dafont.com/">DaFont</a></p>
                 <p><a class="greenBg" href="https://app.programmingfonts.org/">Programming Fonts</a></p>
                 <p><a class="greenBg" href="https://www.typewolf.com/">Typewolf</a></p>
+                <p><a class="greenBg" href="https://fontstruct.com/">Fontstruct</a></p>
             </div>
             <h4 id="resources-online-palettes">Palettes</h4>
             <div class="tab">
@@ -545,6 +464,14 @@
             <div class="tab">
                 <p><a class="greenBg" href="https://www.artstation.com/">Artstation</a></p>
                 <p><a class="greenBg" href="https://sketchfab.com/feed">Sketchfab</a></p>
+            </div>
+            <p>Socials</p>
+            <div class="tab">
+                <p>
+                    Getting your games known is just as important as making them good because at the end of the day,
+                    if no knows about your cool game, no matter how good it is, no one will play it. Bummer.
+                </p>
+                <p><a class="greenBg" href="https://twitter.com">Twitter</a></p>
             </div>
         </div>
         <h3 id="resources-publishing"><mark class="darkBg">Publishing</mark></h3>
@@ -660,7 +587,6 @@
         <div class="tab">
             <p>Try out these cool palettes right here, right now!</p>
             <hr>
-            <p onclick="changePalette(0)"><mark class="purpleBg click">Basic</mark></p>
             <p onclick="changePalette(1)"><mark class="purpleBg click">Sweetie 16</mark></p>
             <p onclick="changePalette(2)"><mark class="purpleBg click">Endesga 8</mark></p>
             <p onclick="changePalette(3)"><mark class="purpleBg click">Gruvbox Dark</mark></p>
