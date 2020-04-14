@@ -51,10 +51,6 @@
             border: 2px solid var(--dark);
         }
 
-        .click {
-            cursor: pointer;
-        }
-
         .section {
             max-width: 50vw;
             padding: 2px 8vw;
@@ -68,6 +64,10 @@
             padding-left: 4ch;
             border-left: 2px var(--dark) solid;
         }
+
+        .click, .show, .hide {
+            cursor: pointer;
+        }
     </style>
     <meta name="author" content="Justinas Grigas">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,13 +75,12 @@
     <link href="favicon.png" rel="shortcut icon">
     <script>
         function hideAndShow(idToHide, idToShow) {
-            idToHide.forEach(function (id) {
-                let element = document.getElementById(id);
+            idToHide.forEach(function (element) {
                 element.style.display = "none";
             });
-            idToShow.forEach(function (id, index) {
-                let element = document.getElementById(id[0]);
-                element.style.display = id[1];
+            console.log(idToShow);
+            idToShow.forEach(function (value) {
+                value[0].style.display = value[1];
             });
         }
 
@@ -93,6 +92,8 @@
             ['#073642','#fdf6e3','#dc322f','#cb4b16','#b58900','#859900','#268bd2','#d33682'],
             ['#101820','#f0f0dc','#a0694b','#d24040','#fac800','#10c840','#00a0c8','#736464'],
             ['#000000','#dcf5ff','#646964','#d77355','#e6c86e','#64b964','#508cd7','#55415f'],
+            ['#2b2821','#e3cfb4','#b03a48','#d4804d','#e0c872','#3e6958','#5c8b93','#243d5c'],
+            ['#282a36','#f8f8f2','#ff5555','#ffb86c','#f1fa8c','#50fa7b','#6272a4','#bd93f9'],
         ];
 
         function changePalette(paletteIndex) {
@@ -120,61 +121,61 @@
                 stickyElements[i].style.maxWidth = sectionWidth + ((gap + childWidth) * 2) +"px";
             }
         }
+
+        function setupHideAndSeek() {
+            // Get a list of all elements.
+            let hideButtons = document.getElementsByClassName("hide");
+            let showButtons = document.getElementsByClassName("show");
+            let containers = document.getElementsByClassName("container");
+
+            for (let i = 0; i < hideButtons.length; i++) {
+                hideButtons[i].onclick = function() {
+                    hideAndShow([containers[i], hideButtons[i]],[[showButtons[i],'inline']]);
+                };
+                console.log(hideButtons[i])
+                showButtons[i].onclick = function() {
+                    hideAndShow([showButtons[i]],[[containers[i],'block'],[hideButtons[i],'inline']]);
+                }
+                hideButtons[i].style.setProperty('display', 'none');
+                containers[i].style.setProperty('display', 'none');
+            }
+        }
     </script>
 </head>
-<body class="darkBg" onresize="alignSticky()" onload="alignSticky()">
+<body class="darkBg" onresize="alignSticky()" onload="alignSticky(); setupHideAndSeek()">
+<!-- Title -->
 <div class="section lightBg">
-    <h2 id="holyHandBook"><mark class="darkBg">Holy Hand Book</mark></h2>
-    <p>The holy book of game makers</p>
+    <h2 id="holyHandBook">
+        <mark class="redBg">Holy Hand Book</mark>
+    </h2>
+    <p>The holy book of game designers.</p>
 </div>
 
-<div class="stick">
-    <h3><a class="redBg" href="#content">Content</a></h3>
-</div>
-<div class="section lightBg">
-    <h2 id="content"><mark class="redBg">Content</mark></h2>
-    <p>Use this to get around the book</p>
-    <hr>
-    <div class="left">
-        <h3><a class="redBg" href="#tipsAndTricks">Tips & Tricks</a></h3>
-        <div class="tab">
-            <h4><a class="darkBg" href="#tipsAndTricks-unity">Unity</a></h4>
-        </div>
-        <h3><a class="redBg" href="#code">Code</a></h3>
-        <div class="tab">
-            <h4><a class="darkBg" href="#code-unity">Unity</a></h4>
-        </div>
-        <h3><a class="redBg" href="#resources">Resources</a></h3>
-        <div class="tab">
-            <h4><a class="darkBg" href="#resources-tools">Tools</a></h4>
-            <h4><a class="darkBg" href="#resources-online">Online</a></h4>
-            <h4><a class="darkBg" href="#resources-publishing">Publishing</a></h4>
-            <h4><a class="darkBg" href="#resources-tutorials">Tutorials</a></h4>
-        </div>
-        <h3><a class="redBg" href="#about">About</a></h3>
-        <h3><a class="redBg" href="#extra">Extra</a></h3>
-    </div>
-</div>
-
+<!-- Tips and Tricks -->
 <div class="stick">
     <h3><a class="orangeBg" href="#tipsAndTricks">Tips & Tricks</a></h3>
 </div>
 <div class="section lightBg">
-    <h2 id="tipsAndTricks"><mark class="orangeBg">Tips & Tricks</mark></h2>
+    <h2 id="tipsAndTricks">
+        <mark class="orangeBg">Tips & Tricks</mark>
+    </h2>
     <p>This section will contain useful tips, tricks and tutorials to make creating games easier</p>
     <hr>
     <div class="left">
-        <h3 id="tipsAndTricks-unity"><mark class="darkBg">Unity</mark>
-            <span id="hide0" class="click" onclick="hideAndShow(['container0', 'hide0'],[['show0', 'inline']])"><mark class="orangeBg">-</mark></span>
-            <span id="show0" class="click" style="display: none" onclick="hideAndShow(['show0'],[['container0', 'block'], ['hide0', 'inline']])"><mark class="orangeBg">+</mark></span>
+        <h3 id="tipsAndTricks-unity">
+            <mark class="darkBg">Unity</mark>
+            <span class="hide"><mark class="orangeBg">-</mark></span>
+            <span class="show"><mark class="orangeBg">+</mark></span>
         </h3>
-        <div id="container0" class="tab">
-            <h4>Change play mode tint
-                <span id="hide00" class="click" onclick="hideAndShow(['container00', 'hide00'],[['show00', 'inline']])"><mark class="orangeBg">-</mark></span>
-                <span id="show00" class="click" style="display: none" onclick="hideAndShow(['show00'],[['container00', 'block'], ['hide00', 'inline']])"><mark class="orangeBg">+</mark></span>
+        <div class="tab container">
+            <h4>
+                Change the play mode tint
+                <span class="hide"><mark class="orangeBg">-</mark></span>
+                <span class="show"><mark class="orangeBg">+</mark></span>
             </h4>
-            <div id="container00" class="tab">
-                <p>The biggest mistake that I see a lot of people do when first starting out with Unity is hitting play,
+            <div class="tab container">
+                <p>
+                    The biggest mistake that I see a lot of people do when first starting out with Unity is hitting play,
                     testing their game, and then making changes to anything. The problem is that they forget to exit play mode
                     which means that their changes won't save. This tip can help you avoid those situations.</p>
                 <hr>
@@ -186,6 +187,7 @@
     </div>
 </div>
 
+<!-- Code -->
 <div class="stick">
     <h3><a class="yellowBg" href="#code">Code</a></h3>
 </div>
@@ -195,43 +197,21 @@
     <hr>
     <div class="left">
         <h3 id="code-unity"><mark class="darkBg">Unity</mark>
-            <span id="hide1" class="click" onclick="hideAndShow(['container1', 'hide1'],[['show1', 'inline']])"><mark class="yellowBg">-</mark></span>
-            <span id="show1" class="click" style="display: none" onclick="hideAndShow(['show1'],[['container1', 'block'], ['hide1', 'inline']])"><mark class="yellowBg">+</mark></span>
+            <span class="hide"><mark class="yellowBg">-</mark></span>
+            <span class="show"><mark class="yellowBg">+</mark></span>
         </h3>
-        <div id="container1" class="tab">
-            <h4>Variables
-                <span id="hide10" class="click" onclick="hideAndShow(['container10', 'hide10'],[['show10', 'inline']])"><mark class="yellowBg">-</mark></span>
-                <span id="show10" class="click" style="display: none" onclick="hideAndShow(['show10'],[['container10', 'block'], ['hide10', 'inline']])"><mark class="yellowBg">+</mark></span>
+        <div class="tab container">
+            <h4>Menu Manager
+                <span class="hide"><mark class="yellowBg">-</mark></span>
+                <span class="show"><mark class="yellowBg">+</mark></span>
             </h4>
-            <div id="container10" class="tab">
-                <p>Variables are containers that can store different types of data. You can use them to keep track of things like player health, movement speed and so on.</p>
+            <div class="tab container">
                 <p>
-                    <a class="yellowBg" href="https://learn.unity.com/tutorial/variables-and-functions">Unity Learn</a>
-                    <a class="yellowBg" href="https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/types-and-variables">MS Docs</a>
+                    The menu manager is a single script that I use to control all my menus.
+                    This whole script boils down to two functions, one which changes the current panel,
+                    and the other which sets up the navigation of the selectables.
                 </p>
-                <script src="https://gist.github.com/jstn-as/3b0260e44c0555658e90769bc8e40c33.js"></script>
-            </div>
-            <h4>Components
-                <span id="hide11" class="click" onclick="hideAndShow(['container11', 'hide11'],[['show11', 'inline']])"><mark class="yellowBg">-</mark></span>
-                <span id="show11" class="click" style="display: none" onclick="hideAndShow(['show11'],[['container11', 'block'], ['hide11', 'inline']])"><mark class="yellowBg">+</mark></span>
-            </h4>
-            <div id="container11" class="tab">
-                <p>
-                    Components are the building blocks of Game Objects that have their own jobs.
-                    For example, every Game Object will always have a Transform component which keeps track of the position, rotation and scale of the object.</p>
-                <p>
-                    <a class="yellowBg" href="https://docs.unity3d.com/Manual/Components.html">Unity Docs</a>
-                </p>
-            </div>
-            <h4>2D Platformer Player Movement
-                <span id="hide12" class="click" onclick="hideAndShow(['container12', 'hide12'],[['show12', 'inline']])"><mark class="yellowBg">-</mark></span>
-                <span id="show12" class="click" style="display: none" onclick="hideAndShow(['show12'],[['container12', 'block'], ['hide12', 'inline']])"><mark class="yellowBg">+</mark></span>
-            </h4>
-            <div id="container12" class="tab">
-                <p>
-                    <a class="yellowBg" href="https://youtu.be/dwcT-Dch0bA">Brackeys</a>
-                    <a class="yellowBg" href="https://youtu.be/QGDeafTx5ug">Blackthornprod</a>
-                </p>
+                <script src="https://gist.github.com/jstnas/0965ab79295e10485700fb28e429f04d.js"></script>
             </div>
         </div>
     </div>
@@ -246,15 +226,15 @@
     <hr>
     <div class="left">
         <h3 id="resources-tools"><mark class="darkBg">Tools</mark>
-            <span id="hide2" class="click" onclick="hideAndShow(['container2', 'hide2'],[['show2', 'inline']])"><mark class="greenBg">-</mark></span>
-            <span id="show2" class="click" style="display: none" onclick="hideAndShow(['show2'],[['container2', 'block'], ['hide2', 'inline']])"><mark class="greenBg">+</mark></span>
+            <span class="hide"><mark class="greenBg">-</mark></span>
+            <span class="show"><mark class="greenBg">+</mark></span>
         </h3>
-        <div id="container2" class="tab">
+        <div class="tab container">
             <h4 id="resources-programs-gameEngines">Game Engines
-                <span id="hide20" class="click" onclick="hideAndShow(['container20', 'hide20'],[['show20', 'inline']])"><mark class="greenBg">-</mark></span>
-                <span id="show20" class="click" style="display: none" onclick="hideAndShow(['show20'],[['container20', 'block'], ['hide20', 'inline']])"><mark class="greenBg">+</mark></span>
+                <span class="hide"><mark class="greenBg">-</mark></span>
+                <span class="show"><mark class="greenBg">+</mark></span>
             </h4>
-            <div id="container20" class="tab">
+            <div class="tab container">
                 <p>The Game Engine is probably the most important tool when it comes to creating a game. The engine
                     usually dictates what programming language the game's code will be written in and what platforms
                     the game will support.</p>
@@ -262,10 +242,10 @@
                 <p>
                     <a href="https://unity.com/" class="greenBg">Unity</a>
                     <mark class="darkBg">2D / 3D</mark>
-                    <span id="hide200" class="click" onclick="hideAndShow(['container200', 'hide200'],[['show200', 'inline']])"><mark class="greenBg">-</mark></span>
-                    <span id="show200" class="click" style="display: none" onclick="hideAndShow(['show200'],[['container200', 'block'], ['hide200', 'inline']])"><mark class="greenBg">+</mark></span>
+                    <span class="hide"><mark class="greenBg">-</mark></span>
+                    <span class="show"><mark class="greenBg">+</mark></span>
                 </p>
-                <div id="container200" class="tab">
+                <div class="tab container">
                     <p>
                         Languages
                         <mark class="darkBg">C#</mark>
@@ -288,8 +268,10 @@
                 <p>
                     <a href="https://godotengine.org/" class="greenBg">Godot</a>
                     <mark class="darkBg">2D / 3D</mark>
+                    <span class="hide"><mark class="greenBg">-</mark></span>
+                    <span class="show"><mark class="greenBg">+</mark></span>
                 </p>
-                <div class="tab">
+                <div class="tab container">
                     <p>
                         Languages
                         <mark class="darkBg">GDScript</mark>
@@ -324,25 +306,18 @@
                 <p><a href="https://www.cryengine.com/" class="greenBg">CryEngine</a></p>
                 <p><a href="https://www.lexaloffle.com/pico-8.php" class="greenBg">Pico 8</a></p>
                 <p><a href="https://armory3d.org/" class="greenBg">Armory 3D</a></p>
-                <p><a href="https://coronalabs.com/product/" class="greenBg">Corona</a></p>
             </div>
             <h4 id="resources-programs-frameworks">Frameworks
-                <span id="hide21" class="click" onclick="hideAndShow(['container21', 'hide21'],[['show21', 'inline']])"><mark class="greenBg">-</mark></span>
-                <span id="show21" class="click" style="display: none" onclick="hideAndShow(['show21'],[['container21', 'block'], ['hide21', 'inline']])"><mark class="greenBg">+</mark></span>
+                <span class="hide"><mark class="greenBg">-</mark></span>
+                <span class="show"><mark class="greenBg">+</mark></span>
             </h4>
-            <div id="container21" class="tab">
+            <div class="tab container">
                 <p>
-                    Frameworks are essentially stripped down versions of Game Engines. In exchange for fancy features,
-                    you get a lower level access which means better performance.
+                    Frameworks are essentially stripped down versions of Game Engines, in exchange for some bells
+                    and whistles like a GUI, frameworks offer smaller sizes, better performance and lower level access.
                 </p>
                 <hr>
                 <p><a class="greenBg" href="https://love2d.org/">Love 2D</a></p>
-                <div class="tab">
-                    <p>
-                        This is lightweight framework you can use to make games using Lua, it doesn't have a GUI which
-                        means you need to script everything yourself, and yet it's quite easy to make simple games.
-                    </p>
-                </div>
                 <p><a class="greenBg" href="https://dragonruby.org/">DragonRuby</a></p>
                 <div class="tab">
                     <p>
@@ -359,9 +334,15 @@
                 </div>
                 <p><a class="greenBg" href="https://www.microsoft.com/en-us/download/details.aspx?id=23714">XNA Game Studio</a></p>
                 <p><a class="greenBg" href="https://haxe.org/use-cases/games/">Haxe</a></p>
+                <p><a href="https://coronalabs.com/product/" class="greenBg">Corona</a></p>
+                <p><a href="https://www.ogre3d.org/" class="greenBg">Ogre 3D</a></p>
             </div>
-            <h4 id="resources-programs-ides">IDEs</h4>
-            <div class="tab">
+            <h4 id="resources-programs-ides">
+                IDEs
+                <span class="hide"><mark class="greenBg">-</mark></span>
+                <span class="show"><mark class="greenBg">+</mark></span>
+            </h4>
+            <div class="tab container">
                 <p><a class="greenBg" href="https://www.jetbrains.com/">JetBrains</a></p>
                 <div class="tab">
                     <p>
@@ -380,11 +361,23 @@
                     </p>
                 </div>
                 <p><a class="greenBg" href="https://code.visualstudio.com/">Visual Studio Code</a></p>
+            </div>
+            <h4>
+                Text Editors
+                <span class="hide"><mark class="greenBg">-</mark></span>
+                <span class="show"><mark class="greenBg">+</mark></span>
+            </h4>
+            <div class="tab container">
                 <p><a class="greenBg" href="https://atom.io/">Atom</a></p>
                 <p><a class="greenBg" href="https://www.sublimetext.com/">Sublime Text</a></p>
+                <p><a class="greenBg" href="https://notepad-plus-plus.org/">Notepad++</a></p>
             </div>
-            <h4 id="resources-programs-art">Art</h4>
-            <div class="tab">
+            <h4 id="resources-programs-art">
+                Art
+                <span class="hide"><mark class="greenBg">-</mark></span>
+                <span class="show"><mark class="greenBg">+</mark></span>
+            </h4>
+            <div class="tab container">
                 <p><a class="greenBg" href="https://www.photoshop.com/">Photoshop</a></p>
                 <div class="tab">
                     <p>
@@ -410,8 +403,12 @@
                 <p><a class="greenBg" href="https://krita.org/en/">Krita</a></p>
                 <p><a class="greenBg" href="https://jp.itch.io/playscii">Playscii</a></p>
             </div>
-            <h4 id="resources-programs-modelling">Modelling</h4>
-            <div class="tab">
+            <h4 id="resources-programs-modelling">
+                Modelling
+                <span class="hide"><mark class="greenBg">-</mark></span>
+                <span class="show"><mark class="greenBg">+</mark></span>
+            </h4>
+            <div class="tab container">
                 <p><a class="greenBg" href="https://www.blender.org/">Blender</a></p>
                 <p><a class="greenBg" href="https://www.autodesk.com/products/maya/overview">Maya</a></p>
                 <p><a class="greenBg" href="https://ephtracy.github.io/">MagicaVoxel</a></p>
@@ -436,11 +433,15 @@
             </div>
             <h4 id="resources-online-fonts">Fonts</h4>
             <div class="tab">
+                <p><a class="greenBg" href="https://fontstruct.com/">Fontstruct</a></p>
+                <div class="tab">
+                    <p>When you can't find the perfect font for you next project, you next best option is to create one!</p>
+                </div>
+                <p><a class="greenBg" href="https://www.patreon.com/somepx">Eeve Somepx</a></p>
                 <p><a class="greenBg" href="https://fonts.google.com/">Google Fonts</a></p>
                 <p><a class="greenBg" href="https://www.dafont.com/">DaFont</a></p>
                 <p><a class="greenBg" href="https://app.programmingfonts.org/">Programming Fonts</a></p>
                 <p><a class="greenBg" href="https://www.typewolf.com/">Typewolf</a></p>
-                <p><a class="greenBg" href="https://fontstruct.com/">Fontstruct</a></p>
             </div>
             <h4 id="resources-online-palettes">Palettes</h4>
             <div class="tab">
@@ -448,20 +449,33 @@
                 <p><a class="greenBg" href="https://coolors.co/">Coolors</a></p>
             </div>
         </div>
-        <h3 id="resources-online"><mark class="darkBg">Online</mark></h3>
-        <div class="tab">
+        <h3 id="resources-online">
+            <mark class="darkBg">Online</mark>
+            <span class="hide"><mark class="greenBg">-</mark></span>
+            <span class="show"><mark class="greenBg">+</mark></span>
+        </h3>
+        <div class="tab container">
             <p>Forums</p>
             <div class="tab">
                 <p><a class="greenBg" href="https://pixelation.org/">Pixelation</a></p>
                 <p><a class="greenBg" href="http://pixeljoint.com/forum/">Pixel Joint Forum</a></p>
+                <p><a class="greenBg" href="https://www.reddit.com/">Reddit</a></p>
             </div>
             <p>Assets</p>
             <div class="tab">
                 <p><a class="greenBg" href="https://opengameart.org/">Open Game Art</a></p>
                 <p><a class="greenBg" href="https://www.kenney.nl/assets">Kenney</a></p>
+                <p><a class="greenBg" href="https://www.mixamo.com/">Mixamo</a></p>
+                <div class="tab">
+                    <p>Mixamo is an online libriary of animations and models, which makes it perfect for when you don't want animate stuff yourself.</p>
+                </div>
+                <p><a class="greenBg" href="https://www.itch.io/game-assets">Itch</a></p>
             </div>
             <p>Showcase</p>
             <div class="tab">
+                <p>If you're a creator, you need to make sure you have a portfolio that shows off you skills,
+                    these sites are perfect places to do just that.</p>
+                <hr>
                 <p><a class="greenBg" href="https://www.artstation.com/">Artstation</a></p>
                 <p><a class="greenBg" href="https://sketchfab.com/feed">Sketchfab</a></p>
             </div>
@@ -471,17 +485,24 @@
                     Getting your games known is just as important as making them good because at the end of the day,
                     if no knows about your cool game, no matter how good it is, no one will play it. Bummer.
                 </p>
+                <hr>
                 <p><a class="greenBg" href="https://twitter.com">Twitter</a></p>
+                <p><a class="greenBg" href="https://www.instagram.com/">Instagram</a></p>
+                <p><a class="greenBg" href="https://www.facebook.com/">Facebook</a></p>
             </div>
         </div>
-        <h3 id="resources-publishing"><mark class="darkBg">Publishing</mark></h3>
-        <div class="tab">
+        <h3 id="resources-publishing">
+            <mark class="darkBg">Publishing</mark>
+            <span class="hide"><mark class="greenBg">-</mark></span>
+            <span class="show"><mark class="greenBg">+</mark></span>
+        </h3>
+        <div class="tab container">
             <p>Making a game is great, getting it out to people is even better, but to do so, you need to find a place to publish your game.</p>
             <hr>
             <p><a class="greenBg" href="https://itch.io/">Itch.io</a></p>
             <div class="tab">
                 <p>
-                    Itch.io makes it easy and free for anyone to publish their games. All you need to do is to create a
+                    Itch makes it easy and free for anyone to publish their games. All you need to do is to create a
                     free account and set up a project. You can then change everything from monetization to embedding.
                 </p>
             </div>
@@ -491,8 +512,12 @@
             <p><a class="greenBg" href="https://discordapp.com/sell-your-game">Discord</a></p>
             <p><a class="greenBg" href="https://developer.android.com/distribute">Play Store</a></p>
         </div>
-        <h3 id="resources-tutorials"><mark class="darkBg">Tutorials</mark></h3>
-        <div class="tab">
+        <h3 id="resources-tutorials">
+            <mark class="darkBg">Tutorials</mark>
+            <span class="hide"><mark class="greenBg">-</mark></span>
+            <span class="show"><mark class="greenBg">+</mark></span>
+        </h3>
+        <div class="tab container">
             <p>Getting into Games Design can be a hard task if you don't know where to look, but with enough help and research it's more than possible for anyone to get into game making.</p>
             <hr>
             <p>Books</p>
@@ -515,6 +540,13 @@
                 <p><a class="greenBg" href="https://www.codecademy.com/">Codecademy</a></p>
                 <p><a class="greenBg" href="https://code.org/">Code.org</a></p>
                 <p><a class="greenBg" href="https://www.codewars.com/">Codewars</a></p>
+            </div>
+            <p>Art</p>
+            <div class="tab">
+                <p>
+                    <a class="greenBg" href="https://lospec.com/pixel-art-tutorials">Lospec</a>
+                    <mark class="darkBg">Pixel Art</mark>
+                </p>
             </div>
         </div>
     </div>
@@ -583,16 +615,42 @@
     <p>Everything else goes here!</p>
     <hr>
     <div class="left">
-        <h4>Palettes</h4>
-        <div class="tab">
+        <h4>
+            Palettes
+            <span class="hide"><mark class="purpleBg">-</mark></span>
+            <span class="show"><mark class="purpleBg">+</mark></span>
+        </h4>
+        <div class="tab container">
             <p>Try out these cool palettes right here, right now!</p>
             <hr>
-            <p onclick="changePalette(1)"><mark class="purpleBg click">Sweetie 16</mark></p>
-            <p onclick="changePalette(2)"><mark class="purpleBg click">Endesga 8</mark></p>
-            <p onclick="changePalette(3)"><mark class="purpleBg click">Gruvbox Dark</mark></p>
-            <p onclick="changePalette(4)"><mark class="purpleBg click">Solarized Dark</mark></p>
-            <p onclick="changePalette(5)"><mark class="purpleBg click">Matriax8C</mark></p>
-            <p onclick="changePalette(6)"><mark class="purpleBg click">Dawnbringer's 8 Color</mark></p>
+            <p onclick="changePalette(1)" class="click">
+                <mark class="purpleBg">Sweetie 16</mark>
+            </p>
+            <p onclick="changePalette(2)" class="click">
+                <mark class="purpleBg">Endesga 8</mark>
+            </p>
+            <p onclick="changePalette(3)" class="click">
+                <mark class="purpleBg">Gruvbox Dark</mark>
+            </p>
+            <p onclick="changePalette(4)" class="click">
+                <mark class="purpleBg">Solarized Dark</mark>
+            </p>
+            <p onclick="changePalette(5)" class="click">
+                <mark class="purpleBg">Matriax8C</mark>
+            </p>
+            <p onclick="changePalette(6)" class="click">
+                <mark class="purpleBg">Dawnbringer's 8 Color</mark>
+            </p>
+            <p onclick="changePalette(7)" class="click">
+                <mark class="purpleBg">Japanese Woodblock</mark>
+                by
+                <a href="https://twitter.com/Polyducks" class="purpleBg">Polyducks</a>
+            </p>
+            <p onclick="changePalette(8)" class="click">
+                <mark class="purpleBg">Dracula</mark>
+                by
+                <a href="https://zenorocha.com/" class="purpleBg">Zeno Rocha</a>
+            </p>
         </div>
     </div>
 </div>
