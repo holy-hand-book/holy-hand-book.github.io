@@ -3,656 +3,377 @@
 <head>
     <title>Holy Hand Book</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Resources for Game Development">
-    <meta name="keywords" content="Holy,Hand,Book,Game,Development,Resources">
-    <style>
-        :root {
-            --dark: #1a1c2c;
-            --light: #f4f4f4;
-            --red: #b13e53;
-            --orange: #ef7d57;
-            --yellow: #ffcd75;
-            --green: #38b764;
-            --blue: #3b5dc9;
-            --purple: #5d275d;
-        }
-
-        .darkBg, ::selection {background-color: var(--dark);color: var(--light)}
-        .lightBg {background-color: var(--light);color: var(--dark)}
-        .redBg {background-color: var(--red);color: var(--light)}
-        .orangeBg {background-color: var(--orange);color: var(--dark)}
-        .yellowBg {background-color: var(--yellow);color: var(--dark)}
-        .greenBg {background-color: var(--green);color: var(--dark)}
-        .blueBg {background-color: var(--blue);color: var(--light)}
-        .purpleBg {background-color: var(--purple);color: var(--light)}
-
-        * {
-            font-family: 'Roboto Mono', monospace !important;
-        }
-
-        mark, a {padding: 0 1ch}
-
-        hr {
-            border: 1px var(--dark) solid;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .stick {
-            position: sticky;
-            margin: auto;
-        }
-
-        .stick > h3 {
-            margin: 0;
-            float: right;
-            border: 2px solid var(--dark);
-        }
-
-        .section {
-            max-width: 50vw;
-            padding: 2px 8vw;
-            margin: 8px auto;
-            text-align: center;
-        }
-
-        .left {text-align: left}
-
-        .tab {
-            padding-left: 4ch;
-            border-left: 2px var(--dark) solid;
-        }
-
-        .click, .show, .hide {
-            cursor: pointer;
-        }
-    </style>
-    <meta name="author" content="Justinas Grigas">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700" rel="stylesheet">
-    <link href="favicon.png" rel="shortcut icon">
-    <script>
-        function hideAndShow(idToHide, idToShow) {
-            idToHide.forEach(function (element) {
-                element.style.display = "none";
-            });
-            console.log(idToShow);
-            idToShow.forEach(function (value) {
-                value[0].style.display = value[1];
-            });
-        }
-
-        const palettes =[
-            ['black',  'white',  'red',    'orange', 'yellow', 'green',  'blue',   'purple' ],
-            ['#1a1c2c','#f4f4f4','#b13e53','#ef7d57','#ffcd75','#38b764','#3b5dc9','#5d275d'],
-            ['#1b1c33','#fdfdf8','#d32734','#da7d22','#e6da29','#28c641','#2d93dd','#7b53ad'],
-            ['#282828','#ebdbb2','#fb4934','#fe8019','#fabd2f','#b8bb26','#83a598','#d3869b'],
-            ['#073642','#fdf6e3','#dc322f','#cb4b16','#b58900','#859900','#268bd2','#d33682'],
-            ['#101820','#f0f0dc','#a0694b','#d24040','#fac800','#10c840','#00a0c8','#736464'],
-            ['#000000','#dcf5ff','#646964','#d77355','#e6c86e','#64b964','#508cd7','#55415f'],
-            ['#2b2821','#e3cfb4','#b03a48','#d4804d','#e0c872','#3e6958','#5c8b93','#243d5c'],
-            ['#282a36','#f8f8f2','#ff5555','#ffb86c','#f1fa8c','#50fa7b','#6272a4','#bd93f9'],
-        ];
-
-        function changePalette(paletteIndex) {
-            let targetPalette = palettes[paletteIndex];
-            document.documentElement.style.setProperty('--dark', targetPalette[0]);
-            document.documentElement.style.setProperty('--light', targetPalette[1]);
-            document.documentElement.style.setProperty('--red', targetPalette[2]);
-            document.documentElement.style.setProperty('--orange', targetPalette[3]);
-            document.documentElement.style.setProperty('--yellow', targetPalette[4]);
-            document.documentElement.style.setProperty('--green', targetPalette[5]);
-            document.documentElement.style.setProperty('--blue', targetPalette[6]);
-            document.documentElement.style.setProperty('--purple', targetPalette[7]);
-        }
-        
-        function alignSticky() {
-            let stickyElements = document.getElementsByClassName("stick");
-
-            for (let i = 0; i < stickyElements.length; i++) {
-                let height = stickyElements[i].childNodes[1].clientHeight;
-                let gap = 8;
-                stickyElements[i].style.top = gap+(height+gap)*i +"px";
-                stickyElements[i].style.bottom = (height+gap) + (height+gap)*(stickyElements.length -1 -i) +"px";
-                let childWidth = stickyElements[i].children[0].offsetWidth;
-                let sectionWidth = document.getElementsByClassName("section")[0].clientWidth;
-                stickyElements[i].style.maxWidth = sectionWidth + ((gap + childWidth) * 2) +"px";
-            }
-        }
-
-        function setupHideAndSeek() {
-            // Get a list of all elements.
-            let hideButtons = document.getElementsByClassName("hide");
-            let showButtons = document.getElementsByClassName("show");
-            let containers = document.getElementsByClassName("container");
-
-            for (let i = 0; i < hideButtons.length; i++) {
-                hideButtons[i].onclick = function() {
-                    hideAndShow([containers[i], hideButtons[i]],[[showButtons[i],'inline']]);
-                };
-                console.log(hideButtons[i])
-                showButtons[i].onclick = function() {
-                    hideAndShow([showButtons[i]],[[containers[i],'block'],[hideButtons[i],'inline']]);
-                }
-                hideButtons[i].style.setProperty('display', 'none');
-                containers[i].style.setProperty('display', 'none');
-            }
-        }
-    </script>
 </head>
-<body class="darkBg" onresize="alignSticky()" onload="alignSticky(); setupHideAndSeek()">
+<body style="width: 50%; margin: auto">
 <!-- Title -->
-<div class="section lightBg">
-    <h2 id="holyHandBook">
-        <mark class="redBg">Holy Hand Book</mark>
-    </h2>
-    <p>The holy book of game designers.</p>
-</div>
+<h1>Holy Hand Book</h1>
+<p>The holy book of game designers.</p>
 
 <!-- Tips and Tricks -->
-<div class="stick">
-    <h3><a class="orangeBg" href="#tipsAndTricks">Tips & Tricks</a></h3>
-</div>
-<div class="section lightBg">
-    <h2 id="tipsAndTricks">
-        <mark class="orangeBg">Tips & Tricks</mark>
-    </h2>
-    <p>This section will contain useful tips, tricks and tutorials to make creating games easier</p>
-    <hr>
-    <div class="left">
-        <h3 id="tipsAndTricks-unity">
-            <mark class="darkBg">Unity</mark>
-            <span class="hide"><mark class="orangeBg">-</mark></span>
-            <span class="show"><mark class="orangeBg">+</mark></span>
-        </h3>
-        <div class="tab container">
-            <h4>
-                Change the play mode tint
-                <span class="hide"><mark class="orangeBg">-</mark></span>
-                <span class="show"><mark class="orangeBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p>
-                    The biggest mistake that I see a lot of people do when first starting out with Unity is hitting play,
-                    testing their game, and then making changes to anything. The problem is that they forget to exit play mode
-                    which means that their changes won't save. This tip can help you avoid those situations.</p>
-                <hr>
-                <p><mark class="darkBg">1</mark> Go to <mark class="darkBg">Edit > Preferences > Colors > Playmode tint</mark></p>
-                <p><mark class="darkBg">2</mark> Change the colour from grey to anything else, I personally go for a subtle
-                    red. If you hit play and then change it, you'll be able to see the tint working.</p>
-            </div>
-        </div>
-    </div>
-</div>
+<hr>
+<h1>Tips & Tricks</h1>
+<p>Usefull tips</p>
+<h2>Unity</h2>
+<ul>
+    <li><h3>Change the play mode tint</h3></li>
+    <p>
+        The biggest mistake that I see a lot of people do when first starting out with Unity is hitting play,
+        testing their game, and then making changes to anything. The problem is that they forget to exit play mode
+        which means that their changes won't save. This tip can help you avoid those situations.
+    </p>
+    <ol>
+        <li>Go to Edit > Preferences > Colors > Playmode tint</mark></li>
+        <li>
+            Change the colour from grey to anything else, I personally go for a subtle red.
+            If you hit play and then change it, you'll be able to see the tint working.
+        </li>
+    </ol>
+</ul>
 
 <!-- Code -->
-<div class="stick">
-    <h3><a class="yellowBg" href="#code">Code</a></h3>
-</div>
-<div class="section lightBg">
-    <h2 id="code"><mark class="yellowBg">Code</mark></h2>
-    <p>I will both keep scripts and snippets to both teach the fundamentals and for my own convenience</p>
-    <hr>
-    <div class="left">
-        <h3 id="code-unity"><mark class="darkBg">Unity</mark>
-            <span class="hide"><mark class="yellowBg">-</mark></span>
-            <span class="show"><mark class="yellowBg">+</mark></span>
-        </h3>
-        <div class="tab container">
-            <h4>Menu Manager
-                <span class="hide"><mark class="yellowBg">-</mark></span>
-                <span class="show"><mark class="yellowBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p>
-                    The menu manager is a single script that I use to control all my menus.
-                    This whole script boils down to two functions, one which changes the current panel,
-                    and the other which sets up the navigation of the selectables.
-                </p>
-                <script src="https://gist.github.com/jstnas/0965ab79295e10485700fb28e429f04d.js"></script>
-            </div>
-        </div>
-    </div>
-</div>
+<hr>
+<h1>Code</h1>
+<p>Scripts and snippets</p>
+<h2>Unity</h2>
+<ul>
+    <li><h4>Menu Manager</h4></li>
+    <p>
+        The menu manager is a single script that I use to control all my menus.
+        This whole script boils down to two functions, one which changes the current panel,
+        and the other which sets up the navigation of the selectables.
+    </p>
+    <script src="https://gist.github.com/jstnas/0965ab79295e10485700fb28e429f04d.js"></script>
+</ul>
 
-<div class="stick">
-    <h3><a class="greenBg" href="#resources">Resources</a></h3>
-</div>
-<div class="section lightBg">
-    <h2 id="resources"><mark class="greenBg">Resources</mark></h2>
-    <p>This sections contains links</p>
-    <hr>
-    <div class="left">
-        <h3 id="resources-tools"><mark class="darkBg">Tools</mark>
-            <span class="hide"><mark class="greenBg">-</mark></span>
-            <span class="show"><mark class="greenBg">+</mark></span>
-        </h3>
-        <div class="tab container">
-            <h4 id="resources-programs-gameEngines">Game Engines
-                <span class="hide"><mark class="greenBg">-</mark></span>
-                <span class="show"><mark class="greenBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p>The Game Engine is probably the most important tool when it comes to creating a game. The engine
-                    usually dictates what programming language the game's code will be written in and what platforms
-                    the game will support.</p>
-                <hr>
-                <p>
-                    <a href="https://unity.com/" class="greenBg">Unity</a>
-                    <mark class="darkBg">2D / 3D</mark>
-                    <span class="hide"><mark class="greenBg">-</mark></span>
-                    <span class="show"><mark class="greenBg">+</mark></span>
-                </p>
-                <div class="tab container">
-                    <p>
-                        Languages
-                        <mark class="darkBg">C#</mark>
-                    </p>
-                    <p>
-                        Supported Platforms
-                        <mark class="darkBg">Desktop</mark>
-                        <mark class="darkBg">Console</mark>
-                        <mark class="darkBg">Mobile</mark>
-                        <mark class="darkBg">Web</mark>
-                        <mark class="darkBg">VR</mark>
-                        <a class="greenBg" href="https://unity3d.com/unity/features/multiplatform">More</a>
-                    </p>
-                    <p>
-                        Unity is the Jack of all trades when it comes to Game Engines as it can be used to create pretty much any type of game for pretty much any platform.
-                        Unity is also free to download and use (Plus and Pro versions come with additional support) which makes it great for beginners who are getting started with game making.
-                        Since Unity is free, it also means that there's a lot of support that's out there making learning the engine relatively easy.
-                    </p>
-                </div>
-                <p>
-                    <a href="https://godotengine.org/" class="greenBg">Godot</a>
-                    <mark class="darkBg">2D / 3D</mark>
-                    <span class="hide"><mark class="greenBg">-</mark></span>
-                    <span class="show"><mark class="greenBg">+</mark></span>
-                </p>
-                <div class="tab container">
-                    <p>
-                        Languages
-                        <mark class="darkBg">GDScript</mark>
-                        <mark class="darkBg">C#</mark>
-                        <mark class="darkBg">C++</mark>
-                        <mark class="darkBg">Visual Script</mark>
-                        <a class="greenBg" href="https://godotengine.org/features">More</a>
-                    </p>
-                    <p>
-                        Supported Platforms
-                        <mark class="darkBg">Desktop</mark>
-                        <mark class="darkBg">Mobile</mark>
-                        <mark class="darkBg">Web</mark>
-                    </p>
-                    <p>
-                        The open source alternative to Unity, which means that it has a huge community of developers
-                        working on it, making this one of the fastest growing engines. You too can modify it in any way
-                        you want. There's support for a big range of languages like C++, C#, Visual Scripting and even
-                        a custom made language made just for Godot called GDScript. It has support for many platform,
-                        and you can even write custom builds yourself. Did I mention that the whole engine only takes up
-                        20MB?
-                    </p>
-                </div>
-                <p><a href="https://www.unrealengine.com" class="greenBg">Unreal Engine</a></p>
-                <div class="tab">
-                    <p>
-                        Languages
-                        <mark class="darkBg">C++</mark>
-                        <mark class="darkBg">Visual Script</mark>
-                    </p>
-                </div>
-                <p><a href="https://www.cryengine.com/" class="greenBg">CryEngine</a></p>
-                <p><a href="https://www.lexaloffle.com/pico-8.php" class="greenBg">Pico 8</a></p>
-                <p><a href="https://armory3d.org/" class="greenBg">Armory 3D</a></p>
-            </div>
-            <h4 id="resources-programs-frameworks">Frameworks
-                <span class="hide"><mark class="greenBg">-</mark></span>
-                <span class="show"><mark class="greenBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p>
-                    Frameworks are essentially stripped down versions of Game Engines, in exchange for some bells
-                    and whistles like a GUI, frameworks offer smaller sizes, better performance and lower level access.
-                </p>
-                <hr>
-                <p><a class="greenBg" href="https://love2d.org/">Love 2D</a></p>
-                <p><a class="greenBg" href="https://dragonruby.org/">DragonRuby</a></p>
-                <div class="tab">
-                    <p>
-                        DragonRuby is another lightweight game toolkit which you can use to make games in Ruby. It's
-                        created by Ryan C. Gordon who's behind SDL.
-                    </p>
-                </div>
-                <p><a class="greenBg" href="https://www.libsdl.org/">SDL</a></p>
-                <div class="tab">
-                    <p>
-                        SDL is the OG framework and is used pretty much everywhere, it was created in 1998 and has been
-                        receiving updates since, it's been used to create popular games like Half-Life.
-                    </p>
-                </div>
-                <p><a class="greenBg" href="https://www.microsoft.com/en-us/download/details.aspx?id=23714">XNA Game Studio</a></p>
-                <p><a class="greenBg" href="https://haxe.org/use-cases/games/">Haxe</a></p>
-                <p><a href="https://coronalabs.com/product/" class="greenBg">Corona</a></p>
-                <p><a href="https://www.ogre3d.org/" class="greenBg">Ogre 3D</a></p>
-            </div>
-            <h4 id="resources-programs-ides">
-                IDEs
-                <span class="hide"><mark class="greenBg">-</mark></span>
-                <span class="show"><mark class="greenBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p><a class="greenBg" href="https://www.jetbrains.com/">JetBrains</a></p>
-                <div class="tab">
-                    <p>
-                        JetBrains for programmers is what Adobe is for artists. They make tools for pretty much every
-                        programming language. All of their programs have a consistent format which  means that
-                        transitioning between them is really simple. However just like Adobe, you'll need to pay a
-                        monthly or yearly fee. But they have a lot of
-                        <a class="greenBg" href="https://www.jetbrains.com/store/?fromMenu#edition=discounts">special offers</a>
-                        like a free licence for anyone in education.
-                    </p>
-                </div>
-                <p><a class="greenBg" href="https://visualstudio.microsoft.com/vs/">Visual Studio</a></p>
-                <div class="tab">
-                    <p>
-                        Visual Studio is a free IDE from Microsoft that can be used for pretty much anything.
-                    </p>
-                </div>
-                <p><a class="greenBg" href="https://code.visualstudio.com/">Visual Studio Code</a></p>
-            </div>
-            <h4>
-                Text Editors
-                <span class="hide"><mark class="greenBg">-</mark></span>
-                <span class="show"><mark class="greenBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p><a class="greenBg" href="https://atom.io/">Atom</a></p>
-                <p><a class="greenBg" href="https://www.sublimetext.com/">Sublime Text</a></p>
-                <p><a class="greenBg" href="https://notepad-plus-plus.org/">Notepad++</a></p>
-            </div>
-            <h4 id="resources-programs-art">
-                Art
-                <span class="hide"><mark class="greenBg">-</mark></span>
-                <span class="show"><mark class="greenBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p><a class="greenBg" href="https://www.photoshop.com/">Photoshop</a></p>
-                <div class="tab">
-                    <p>
-                        Photoshop is Jack of all art tools. It can be used for any type of art, from traditional to pixel
-                        which means it'll work with any project you want. However, Adobe uses a subscription business
-                        model which means you'll be paying monthly or yearly. There are discounts for students.
-                    </p>
-                </div>
-                <p>
-                    <a class="greenBg" href="https://www.aseprite.org/">Aseprite</a>
-                    <mark class="darkBg">Pixel Art</mark>
-                </p>
-                <div class="tab">
-                    <p>
-                        Aseprite is a pixel art tool, while it's not as versatile as Photoshop, it's very specialised
-                        meaning it has a lot of tools and features to make drawing pixel art easier.
-                    </p>
-                </div>
-                <p><a class="greenBg" href="https://graphicsgale.com/us/">Graphics Gale</a></p>
-                <p><a class="greenBg" href="https://www.pyxeledit.com/">Pyxel Edit</a></p>
-                <p><a class="greenBg" href="https://www.cosmigo.com/">Pro Motion NG</a></p>
-                <p><a class="greenBg" href="https://www.gimp.org/">GIMP</a></p>
-                <p><a class="greenBg" href="https://krita.org/en/">Krita</a></p>
-                <p><a class="greenBg" href="https://jp.itch.io/playscii">Playscii</a></p>
-            </div>
-            <h4 id="resources-programs-modelling">
-                Modelling
-                <span class="hide"><mark class="greenBg">-</mark></span>
-                <span class="show"><mark class="greenBg">+</mark></span>
-            </h4>
-            <div class="tab container">
-                <p><a class="greenBg" href="https://www.blender.org/">Blender</a></p>
-                <p><a class="greenBg" href="https://www.autodesk.com/products/maya/overview">Maya</a></p>
-                <p><a class="greenBg" href="https://ephtracy.github.io/">MagicaVoxel</a></p>
-                <p><a class="greenBg" href="http://crocotile3d.com/">Crocotile 3D</a></p>
-                <p><a class="greenBg" href="http://pixologic.com/features/">ZBrush</a></p>
-                <p><a class="greenBg" href="https://www.maxon.net/en-us/products/cinema-4d/overview/">Cinema 4D</a></p>
-                <p><a class="greenBg" href="https://www.autodesk.co.uk/products/3ds-max/overview">3DS MAX</a></p>
-            </div>
-            <h4 id="resources-programs-sourceControl">Source Control</h4>
-            <div class="tab">
-                <p><a class="greenBg" href="https://github.com/">GitHub</a></p>
-                <p><a class="greenBg" href="https://bitbucket.org/">Bitbucket</a></p>
-                <p><a class="greenBg" href="https://desktop.github.com/">GitHub Desktop</a></p>
-                <p><a class="greenBg" href="https://www.gitkraken.com/">GitKraken</a></p>
-            </div>
-            <h4 id="resources-programs-soundDesign">Sound Design</h4>
-            <div class="tab">
-                <p><a class="greenBg" href="https://lmms.io/">LMMS</a></p>
-                <p><a class="greenBg" href="https://www.bfxr.net/">Bfxr</a></p>
-                <p><a class="greenBg" href="http://drpetter.se/project_sfxr.html">Sfxr</a></p>
-                <p><a class="greenBg" href="https://boscaceoil.net/">Bosca Ceoil</a></p>
-            </div>
-            <h4 id="resources-online-fonts">Fonts</h4>
-            <div class="tab">
-                <p><a class="greenBg" href="https://fontstruct.com/">Fontstruct</a></p>
-                <div class="tab">
-                    <p>When you can't find the perfect font for you next project, you next best option is to create one!</p>
-                </div>
-                <p><a class="greenBg" href="https://www.patreon.com/somepx">Eeve Somepx</a></p>
-                <p><a class="greenBg" href="https://fonts.google.com/">Google Fonts</a></p>
-                <p><a class="greenBg" href="https://www.dafont.com/">DaFont</a></p>
-                <p><a class="greenBg" href="https://app.programmingfonts.org/">Programming Fonts</a></p>
-                <p><a class="greenBg" href="https://www.typewolf.com/">Typewolf</a></p>
-            </div>
-            <h4 id="resources-online-palettes">Palettes</h4>
-            <div class="tab">
-                <p><a class="greenBg" href="https://lospec.com/palette-list">Lospec</a></p>
-                <p><a class="greenBg" href="https://coolors.co/">Coolors</a></p>
-            </div>
-        </div>
-        <h3 id="resources-online">
-            <mark class="darkBg">Online</mark>
-            <span class="hide"><mark class="greenBg">-</mark></span>
-            <span class="show"><mark class="greenBg">+</mark></span>
-        </h3>
-        <div class="tab container">
-            <p>Forums</p>
-            <div class="tab">
-                <p><a class="greenBg" href="https://pixelation.org/">Pixelation</a></p>
-                <p><a class="greenBg" href="http://pixeljoint.com/forum/">Pixel Joint Forum</a></p>
-                <p><a class="greenBg" href="https://www.reddit.com/">Reddit</a></p>
-            </div>
-            <p>Assets</p>
-            <div class="tab">
-                <p><a class="greenBg" href="https://opengameart.org/">Open Game Art</a></p>
-                <p><a class="greenBg" href="https://www.kenney.nl/assets">Kenney</a></p>
-                <p><a class="greenBg" href="https://www.mixamo.com/">Mixamo</a></p>
-                <div class="tab">
-                    <p>Mixamo is an online libriary of animations and models, which makes it perfect for when you don't want animate stuff yourself.</p>
-                </div>
-                <p><a class="greenBg" href="https://www.itch.io/game-assets">Itch</a></p>
-            </div>
-            <p>Showcase</p>
-            <div class="tab">
-                <p>If you're a creator, you need to make sure you have a portfolio that shows off you skills,
-                    these sites are perfect places to do just that.</p>
-                <hr>
-                <p><a class="greenBg" href="https://www.artstation.com/">Artstation</a></p>
-                <p><a class="greenBg" href="https://sketchfab.com/feed">Sketchfab</a></p>
-            </div>
-            <p>Socials</p>
-            <div class="tab">
-                <p>
-                    Getting your games known is just as important as making them good because at the end of the day,
-                    if no knows about your cool game, no matter how good it is, no one will play it. Bummer.
-                </p>
-                <hr>
-                <p><a class="greenBg" href="https://twitter.com">Twitter</a></p>
-                <p><a class="greenBg" href="https://www.instagram.com/">Instagram</a></p>
-                <p><a class="greenBg" href="https://www.facebook.com/">Facebook</a></p>
-            </div>
-        </div>
-        <h3 id="resources-publishing">
-            <mark class="darkBg">Publishing</mark>
-            <span class="hide"><mark class="greenBg">-</mark></span>
-            <span class="show"><mark class="greenBg">+</mark></span>
-        </h3>
-        <div class="tab container">
-            <p>Making a game is great, getting it out to people is even better, but to do so, you need to find a place to publish your game.</p>
-            <hr>
-            <p><a class="greenBg" href="https://itch.io/">Itch.io</a></p>
-            <div class="tab">
-                <p>
-                    Itch makes it easy and free for anyone to publish their games. All you need to do is to create a
-                    free account and set up a project. You can then change everything from monetization to embedding.
-                </p>
-            </div>
-            <p><a class="greenBg" href="https://partner.steamgames.com/doc/gettingstarted">Steamworks</a></p>
-            <p><a class="greenBg" href="https://www.gog.com/indie">GOG.com</a></p>
-            <p><a class="greenBg" href="https://www.humblebundle.com/publishing">Humble Publishing</a></p>
-            <p><a class="greenBg" href="https://discordapp.com/sell-your-game">Discord</a></p>
-            <p><a class="greenBg" href="https://developer.android.com/distribute">Play Store</a></p>
-        </div>
-        <h3 id="resources-tutorials">
-            <mark class="darkBg">Tutorials</mark>
-            <span class="hide"><mark class="greenBg">-</mark></span>
-            <span class="show"><mark class="greenBg">+</mark></span>
-        </h3>
-        <div class="tab container">
-            <p>Getting into Games Design can be a hard task if you don't know where to look, but with enough help and research it's more than possible for anyone to get into game making.</p>
-            <hr>
-            <p>Books</p>
-            <div class="tab">
-                <p><a class="greenBg" href="https://books.google.co.uk/books?id=8w_ETFmHrewC&printsec=frontcover#v=onepage&q&f=false">Level Up!: The Guide to Great Video Game Design</a></p>
-                <p><a class="greenBg" href="https://books.google.co.uk/books?id=kRMeBQAAQBAJ&printsec=frontcover#v=onepage&q&f=false">The Art of Game Design: A Book of Lenses, Second Edition</a></p>
-                <p><a class="greenBg" href="https://books.google.co.uk/books?id=jYdqQ4YdccYC&printsec=frontcover#v=onepage&q&f=false">Theory of Fun for Game Design</a></p>
-            </div>
-            <p>YouTubers</p>
-            <div class="tab">
-                <p><a class="greenBg" href="https://www.youtube.com/user/Brackeys/">Brackeys</a></p>
-                <p><a class="greenBg" href="https://www.youtube.com/channel/UC9Z1XWw1kmnvOOFsj6Bzy2g">Blackthornprod</a></p>
-                <p><a class="greenBg" href="https://www.youtube.com/channel/UCuHVjteDW9tCb8QqMrtGvwQ">Thomas Brush</a></p>
-                <p><a class="greenBg" href="https://www.youtube.com/user/ExtraCreditz">Extra Credits</a></p>
-                <p><a class="greenBg" href="https://www.youtube.com/channel/UCd_lJ4zSp9wZDNyeKCWUstg">Ask Gamedev</a></p>
-            </div>
-            <p>Programming</p>
-            <div class="tab">
-                <p><a class="greenBg" href="https://www.khanacademy.org/">Khan Academy</a></p>
-                <p><a class="greenBg" href="https://www.codecademy.com/">Codecademy</a></p>
-                <p><a class="greenBg" href="https://code.org/">Code.org</a></p>
-                <p><a class="greenBg" href="https://www.codewars.com/">Codewars</a></p>
-            </div>
-            <p>Art</p>
-            <div class="tab">
-                <p>
-                    <a class="greenBg" href="https://lospec.com/pixel-art-tutorials">Lospec</a>
-                    <mark class="darkBg">Pixel Art</mark>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="stick">
-    <h3><a class="blueBg" href="#about">About</a></h3>
-</div>
-<div class="section lightBg">
-    <h2 id="about"><mark class="blueBg">About</mark></h2>
-    <p>This sections contains all the information about Holy Hand Book</p>
-    <hr>
-    <div class="left">
-        <h4>What exactly is the Holy Hand Book?</h4>
-        <div class="tab">
-            <p>The Holy Hand Book is a website that contains different resources to help you with game development.
-                You'll find everything from tips and tricks to links to software and other resources.
-            </p>
-        </div>
-        <h4>Why the name "Holy Hand Book"?</h4>
-        <div class="tab">
+<!-- Resources -->
+<hr>
+<h1>Resources</h1>
+<p>This sections contains links</p>
+<ul>
+    <li><h2>Tools</h2></li>
+    <ul>
+        <li><h3>Game Engines</h3></li>
+        <p>
+            The Game Engine is probably the most important tool when it comes to creating a game. The engine
+            usually dictates what programming language the game's code will be written in and what platforms
+            the game will support.
+        </p>
+        <ul>
+            <li>
+                <a href="https://unity.com/">Unity</a>
+                2D / 3D
+            </li>
+            <p>Languages:</p>
+            <ul>
+                <li>C#</li>
+            </ul>
+            <p>Supported Platforms:</p>
+            <ul>
+                <li>Desktop</li>
+                <li>Console</li>
+                <li>Mobile</li>
+                <li>Web</li>
+                <li>VR</li>
+                <li><a href="https://unity3d.com/unity/features/multiplatform">More</a></li>
+            </ul>
             <p>
-                I was writing this project just after I had seen ready player one.
-                For some reason, the reference to the holy hand grenade really stuck with me.
-                So when I was coming up with a name for this project, that was the first thing that popped into my head, and that was that.
+                Unity is probably the most popular free Game Engine out there, and for good reason as it supports a huge
+                number of platforms and can be used to make any type of game. Unity has a massive community which means
+                there's a lot of support and tutorials.
             </p>
-        </div>
-        <h4>How did this come about?</h4>
-        <div class="tab">
-            <p>
-                This project originally started out when my best friend asked me for tips to help him with Unity.
-                I created a text file with tons of tips, tricks and links and realised that a website would be a much
-                better format for this. So here we are.
-            </p>
-        </div>
-        <h4>Credits</h4>
-        <div>
-            <div class="tab">
-                <p>
-                    Created by:
-                    <a class="blueBg" href="https://jstn-as.github.io/">Justinas "jstn_as" Grigas</a>
-                </p>
-                <p>
-                    Hosted on:
-                    <a class="blueBg" href="https://github.com/holy-hand-book/holy-hand-book.github.io">GitHub</a>
-                </p>
-                <p>
-                    Font:
-                    <a class="blueBg" href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a> by
-                    <a class="blueBg" href="https://twitter.com/cr64">Christian Robertson</a>
-                </p>
-                <p>
-                    Palette: <a class="blueBg" href="https://lospec.com/palette-list/sweetie-16">Sweetie 16</a>
-                    by <a class="blueBg" href="https://grafxkid.tumblr.com/palettes">GrafxKid</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="stick">
-    <h3><a class="purpleBg" href="#extra">Extra</a></h3>
-</div>
-<div class="section lightBg">
-    <h2 id="extra"><mark class="purpleBg">Extra</mark></h2>
-    <p>Everything else goes here!</p>
-    <hr>
-    <div class="left">
-        <h4>
-            Palettes
-            <span class="hide"><mark class="purpleBg">-</mark></span>
-            <span class="show"><mark class="purpleBg">+</mark></span>
-        </h4>
-        <div class="tab container">
-            <p>Try out these cool palettes right here, right now!</p>
-            <hr>
-            <p onclick="changePalette(1)" class="click">
-                <mark class="purpleBg">Sweetie 16</mark>
-            </p>
-            <p onclick="changePalette(2)" class="click">
-                <mark class="purpleBg">Endesga 8</mark>
-            </p>
-            <p onclick="changePalette(3)" class="click">
-                <mark class="purpleBg">Gruvbox Dark</mark>
-            </p>
-            <p onclick="changePalette(4)" class="click">
-                <mark class="purpleBg">Solarized Dark</mark>
-            </p>
-            <p onclick="changePalette(5)" class="click">
-                <mark class="purpleBg">Matriax8C</mark>
-            </p>
-            <p onclick="changePalette(6)" class="click">
-                <mark class="purpleBg">Dawnbringer's 8 Color</mark>
-            </p>
-            <p onclick="changePalette(7)" class="click">
-                <mark class="purpleBg">Japanese Woodblock</mark>
-                by
-                <a href="https://twitter.com/Polyducks" class="purpleBg">Polyducks</a>
-            </p>
-            <p onclick="changePalette(8)" class="click">
-                <mark class="purpleBg">Dracula</mark>
-                by
-                <a href="https://zenorocha.com/" class="purpleBg">Zeno Rocha</a>
-            </p>
-        </div>
-    </div>
-</div>
+            <li>
+                <a href="https://godotengine.org/">Godot</a>
+                2D / 3D
+            </li>
+            <p>Languages:</p>
+            <ul>
+                <li>GDScript</li>
+                <li>C#</li>
+                <li>C++</li>
+                <li>Visual Script</li>
+                <li><a href="https://godotengine.org/features">More</a></li>
+            </ul>
+            <p>Supported Platforms:</p>
+            <ul>
+                <li>Desktop</li>
+                <li>Mobile</li>
+                <li>Web</li>
+            </ul>
+
+            <li>
+                <a href="https://www.unrealengine.com">Unreal Engine</a>
+                3D
+            </li>
+            <p>Languages:</p>
+            <ul>
+                <li>C++</li>
+                <li>Blueprints</li>
+            </ul>
+
+            <li>
+                <a href="https://www.cryengine.com/">CryEngine</a>
+                3D
+            </li>
+
+            <li>
+                <a href="https://www.lexaloffle.com/pico-8.php">Pico 8</a>
+                2D
+            </li>
+
+            <li>
+                <a href="https://armory3d.org/">Armory 3D</a>
+                3D
+            </li>
+        </ul>
+
+        <li><h3>Frameworks</h3></li>
+        <p>
+            Frameworks are Game Engines that do not come with a GUI, which means most of the work is done through scripting.
+        </p>
+        <ul>
+            <li>
+                <a href="https://love2d.org/">Love 2D</a>
+                2D
+            </li>
+            <p>Languages:</p>
+            <ul>
+                <li>Lua</li>
+            </ul>
+
+            <li>
+                <a href="https://dragonruby.org/">DragonRuby</a>
+                2D
+            </li>
+            <p>Languages:</p>
+            <ul>
+                <li>Ruby</li>
+            </ul>
+
+            <li>
+                <a href="https://www.libsdl.org/">SDL</a>
+                2D / 3D
+            </li>
+            <p>Languages:</p>
+            <ul>
+                <li>C++</li>
+            </ul>
+
+            <li>
+                <a href="https://haxe.org/use-cases/games/">Haxe</a>
+            </li>
+
+            <li>
+                <a href="https://coronalabs.com/">Corona</a>
+                2D
+            </li>
+
+            <li>
+                <a href="https://www.ogre3d.org/">Ogre 3D</a>
+            </li>
+        </ul>
+
+        <li><h3>IDEs</h3></li>
+        <ul>
+            <li>
+                <a class="greenBg" href="https://www.jetbrains.com/">JetBrains</a>
+            </li>
+
+            <li>
+                <a href="https://visualstudio.microsoft.com/vs/">Visual Studio</a>
+            </li>
+
+            <li>
+                <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+            </li>
+        </ul>
+
+        <li><h3>Text Editors</h3></li>
+        <ul>
+            <li><a href="https://atom.io/">Atom</a></li>
+            <li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
+            <li><a href="https://notepad-plus-plus.org/">Notepad++</a></li>
+        </ul>
+
+        <li><h3>Art</h3></li>
+        <ul>
+            <li>
+                <a href="https://www.gimp.org/">GIMP</a>
+                Digital Art
+            </li>
+            <li>
+                <a href="https://krita.org/en/">Krita</a>
+                Painting
+            </li>
+            <li>
+                <a href="https://www.aseprite.org/">Aseprite</a>
+                Pixel Art
+            </li>
+            <li>
+                <a href="https://graphicsgale.com/us/">Graphics Gale</a>
+                Pixel Art
+            </li>
+            <li>
+                <a href="https://www.pyxeledit.com/">Pyxel Edit</a>
+                Pixel Art
+            </li>
+            <li>
+                <a href="https://www.cosmigo.com/">Pro Motion NG</a>
+                Pixel Art
+            </li>
+            <li>
+                <a href="http://vectorpoem.com/playscii/">Playscii</a>
+                Ascii Art
+            </li>
+            <li>
+                <a href="https://www.photoshop.com/">Photoshop</a>
+                Digital Art
+            </li>
+        </ul>
+
+        <li><h3>Modelling</h3></li>
+        <ul>
+            <li><a href="https://www.blender.org/">Blender</a></li>
+            <li><a href="https://www.autodesk.com/products/maya/overview">Maya</a></li>
+            <li><a href="https://ephtracy.github.io/">MagicaVoxel</a></li>
+            <li><a href="http://crocotile3d.com/">Crocotile 3D</a></li>
+            <li><a href="http://pixologic.com/features/">ZBrush</a></li>
+            <li><a href="https://www.maxon.net/en-us/products/cinema-4d/overview/">Cinema 4D</a></li>
+            <li><a href="https://www.autodesk.co.uk/products/3ds-max/overview">3DS MAX</a></li>
+        </ul>
+
+        <li><h3 >Source Control</h3></li>
+        <ul>
+            <li><a href="https://github.com/">GitHub</a></li>
+            <li><a href="https://bitbucket.org/">Bitbucket</a></li>
+            <li><a href="https://desktop.github.com/">GitHub Desktop</a></li>
+            <li><a href="https://www.gitkraken.com/">GitKraken</a></li>
+        </ul>
+
+        <li><h3 >Sound Design</h3></li>
+        <ul>
+            <li><a href="https://lmms.io/">LMMS</a></li>
+            <li><a href="https://www.bfxr.net/">Bfxr</a></li>
+            <li><a href="http://drpetter.se/project_sfxr.html">Sfxr</a></li>
+            <li><a href="https://boscaceoil.net/">Bosca Ceoil</a></li>
+        </ul>
+
+        <li><h3 >Fonts</h3></li>
+        <ul>
+            <li><a href="https://fontstruct.com/">Fontstruct</a></li>
+            <li><a href="https://www.patreon.com/somepx">Eeve Somepx</a></li>
+            <li><a href="https://fonts.google.com/">Google Fonts</a></li>
+            <li><a href="https://www.dafont.com/">DaFont</a></li>
+            <li><a href="https://app.programmingfonts.org/">Programming Fonts</a></li>
+        </ul>
+
+        <li><h3>Palettes</h3></li>
+        <ul>
+            <li><a href="https://lospec.com/palette-list">Lospec</a></li>
+            <li><a href="https://coolors.co/">Coolors</a></li>
+        </ul>
+    </ul>
+
+    <h2>Online</h2>
+    <ul>
+        <li><h3>Forums</h3></li>
+        <ul>
+            <li><a href="https://pixelation.org/">Pixelation</a></li>
+            <li><a href="http://pixeljoint.com/forum/">Pixel Joint Forum</a></li>
+            <li><a href="https://www.reddit.com/">Reddit</a></li>
+        </ul>
+        <li><h3>Assets</h3></li>
+        <ul>
+            <li><a href="https://opengameart.org/">Open Game Art</a></li>
+            <li><a href="https://www.kenney.nl/assets">Kenney</a></li>
+            <li><a href="https://www.mixamo.com/">Mixamo</a></li>
+            <li><a href="https://www.itch.io/game-assets">Itch</a></li>
+        </ul>
+        <li><h3>Showcase</h3></li>
+        <ul>
+            <li><a href="https://www.artstation.com/">Artstation</a></li>
+            <li><a href="https://sketchfab.com/feed">Sketchfab</a></li>
+        </ul>
+        <li><h3>Socials</h3></li>
+        <ul>
+            <li><a href="https://twitter.com">Twitter</a></li>
+            <li><a href="https://www.instagram.com/">Instagram</a></li>
+            <li><a href="https://www.facebook.com/">Facebook</a></li>
+        </ul>
+    </ul>
+
+    <h2>Publishing</h2>
+    <ul>
+        <li><a href="https://itch.io/">Itch.io</a></li>
+        <li><a href="https://partner.steamgames.com/doc/gettingstarted">Steamworks</a></li>
+        <li><a href="https://www.gog.com/indie">GOG.com</a></li>
+        <li><a href="https://www.humblebundle.com/publishing">Humble Publishing</a></li>
+        <li><a href="https://discordapp.com/sell-your-game">Discord</a></li>
+        <li><a href="https://developer.android.com/distribute">Play Store</a></li>
+    </ul>
+
+    <h2>Tutorials</h2>
+    <ul>
+        <li>Books</li>
+        <ul>
+            <li><a href="https://books.google.co.uk/books?id=8w_ETFmHrewC">Level Up!: The Guide to Great Video Game Design</a></li>
+            <li><a href="https://books.google.co.uk/books?id=kRMeBQAAQBAJ">The Art of Game Design: A Book of Lenses, Second Edition</a></li>
+            <li><a href="https://books.google.co.uk/books?id=jYdqQ4YdccYC">Theory of Fun for Game Design</a></li>
+        </ul>
+        <li>YouTubers</li>
+        <ul>
+            <li><a href="https://www.youtube.com/user/Brackeys/">Brackeys</a></li>
+            <li><a href="https://www.youtube.com/channel/UC9Z1XWw1kmnvOOFsj6Bzy2g">Blackthornprod</a></li>
+            <li><a href="https://www.youtube.com/channel/UCuHVjteDW9tCb8QqMrtGvwQ">Thomas Brush</a></li>
+            <li><a href="https://www.youtube.com/user/ExtraCreditz">Extra Credits</a></li>
+            <li><a href="https://www.youtube.com/channel/UCd_lJ4zSp9wZDNyeKCWUstg">Ask Gamedev</a></li>
+        </ul>
+        <li>Programming</li>
+        <ul>
+            <li><a href="https://www.khanacademy.org/">Khan Academy</a></li>
+            <li><a href="https://www.codecademy.com/">Codecademy</a></li>
+            <li><a href="https://code.org/">Code.org</a></li>
+            <li><a href="https://www.codewars.com/">Codewars</a></li>
+        </ul>
+        <li>Art</li>
+        <ul>
+            <li>
+                <a href="https://lospec.com/pixel-art-tutorials">Lospec</a>
+                Pixel Art
+            </li>
+        </ul>
+    </ul>
+</ul>
+
+<hr>
+<h1>About</h1>
+<p>This sections contains all the information about Holy Hand Book</p>
+<ul>
+    <li><h2>What is the Holy Hand Book?</h2></li>
+    <p>
+        The Hold Hand Book is website that contains resources to help games developers.
+    </p>
+    <li><h2>Why the name "Holy Hand Book"?</h2></li>
+    <p>
+        I was writing this project just after I had seen ready player one.
+        For some reason, the reference to the holy hand grenade really stuck with me.
+        So when I was coming up with a name for this project, that was the first thing that popped into my head, and that was that.
+    </p>
+    <li><h2>How did this come about?</h2></li>
+    <p>
+        This project originally started out when my best friend asked me for tips to help him with Unity.
+        I created a text file with tons of tips, tricks and links and realised that a website would be a much
+        better format for this. So here we are.
+    </p>
+    <li><h2>Credits</h2></li>
+    <p>
+        Created by:
+        <a href="https://jstnas.github.io/">Justinas "jstnas" Grigas</a>
+    </p>
+    <p>
+        Hosted on:
+        <a href="https://github.com/holy-hand-book/holy-hand-book.github.io">GitHub</a>
+    </p>
+</ul>
 </body>
 </html>
